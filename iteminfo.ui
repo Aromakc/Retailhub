@@ -234,7 +234,7 @@
     <string>Update</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="pushButton_delete">
    <property name="geometry">
     <rect>
      <x>690</x>

@@ -36,10 +36,7 @@ void ItemInfo::on_pushButton_vinv_clicked()
 
 }
 
-
-
 // INPUT DATABASE
-
 
 void ItemInfo::on_pushButton_clicked()
 {
@@ -70,6 +67,12 @@ void ItemInfo::on_pushButton_clicked()
 
     if(qry.exec()){
         QMessageBox::information(this,tr("Save"),tr("Saved"));
+        ui->lineEdit_brand->clear();
+        ui->lineEdit_iid->clear();
+        ui->lineEdit_item->clear();
+        ui->lineEdit_type->clear();
+        ui->lineEdit_price->clear();
+        ui->lineEdit_qty->clear();
     }
     else
     {
@@ -82,36 +85,8 @@ void ItemInfo::on_pushButton_clicked()
     }
 }
 
-
-
 // UPDATE DATABASE
 
-
-
-/*void ItemInfo::on_update_clicked()
-{
-    QString type,brand,item,iid,price,quantity;
-    iid=ui->lineEdit_iid->text().toInt();
-    type=ui->lineEdit_type->text();
-    brand=ui->lineEdit_brand->text();
-    item=ui->lineEdit_item->text();
-    price=ui->lineEdit_price->text().toInt();
-    quantity=ui->lineEdit_qty->text().toInt();
-
-    QSqlQuery qry;
-    qry.prepare("UPDATE Inventory set ID='"+iid+"',Type='"+type+"',Brand='"+brand+"',Items='"+item+",'Price='"+price+"',Quantity='"+quantity+"' WHERE ID='"+iid+"'");
-
-
-    if(qry.exec( )){
-        QMessageBox::information(this,tr("Edit"),tr("Updated"));
-    }
-    else
-    {
-        QMessageBox::critical(this,tr("Error."),qry.lastError().text());         //?????????
-    }
-
-}
-*/
 void ItemInfo::on_update_clicked()
 {
     QString type,brand,item,iid,price,quantity;
@@ -135,6 +110,29 @@ void ItemInfo::on_update_clicked()
     }
     else
     {
-        QMessageBox::critical(this,tr("Error."),qry.lastError().text());         //?????????
+        QMessageBox::critical(this,tr("Error."),qry.lastError().text());
+    }
+}
+
+// DELETE DATABASE
+void ItemInfo::on_pushButton_delete_clicked()
+{
+    QString iid;
+    iid=ui->lineEdit_iid->text();
+
+    QSqlQuery qry;
+    qry.prepare("DELETE from Inventory WHERE ID="+iid+"");
+    if(qry.exec()){
+        QMessageBox::information(this,tr("Delete"),tr("Deleted"));
+        ui->lineEdit_iid->clear();
+        ui->lineEdit_brand->clear();
+        ui->lineEdit_item->clear();
+        ui->lineEdit_type->clear();
+        ui->lineEdit_price->clear();
+        ui->lineEdit_qty->clear();
+    }
+    else
+    {
+        QMessageBox::critical(this,tr("Error."),qry.lastError().text());
     }
 }

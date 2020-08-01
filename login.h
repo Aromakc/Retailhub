@@ -26,7 +26,7 @@ public:
     bool connOpen()
     {
          QSqlDatabase mydb=QSqlDatabase::addDatabase("QSQLITE");
-         mydb.setDatabaseName("C:\\Users\\suwas\\Documents\\Sqlite_DB\\items.db");
+         mydb.setDatabaseName("D:\\Retailhub\\Retailhub\\items.db");
         if(!mydb.open()){
             qDebug()<<("Failed to locate database!");
             return false;
