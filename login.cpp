@@ -1,6 +1,7 @@
 #include "login.h"
 #include"iteminfo.h"
 #include "ui_login.h"
+#include "createaccount.h"
 
 #include <QMessageBox>
 
@@ -32,10 +33,10 @@ void Login::on_pushButton_clicked()
     QString username = ui->lineEdit_username->text();
     QString password = ui->lineEdit_password->text();
 
-    if(username ==  "sinns" && password == "12345") {
+    if(username ==  "a" && password == "a") {
         //QMessageBox::information(this, "Login", "Username and password is correct");
 
-        this->close();                   // hide information dialog.
+        //this->close();                   // hide information dialog.
         ItemInfo iteminfo(username);
         iteminfo.setModal(true);
         iteminfo.exec();
@@ -45,4 +46,11 @@ void Login::on_pushButton_clicked()
         QMessageBox::warning(this,"Login", "Username and password is not correct");
     }
 
+}
+
+void Login::on_pushButton_2_clicked()
+{
+    CreateAccount createaccount;
+    createaccount.setModal(true);
+    createaccount.exec();
 }

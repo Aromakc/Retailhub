@@ -42,8 +42,7 @@ void ItemInfo::on_pushButton_clicked()
 {
     QString type,brand,item;
     qint64 iid,price,quantity;
-    //iid=ui->lineEdit_iid->text().toInt();
-   bool ok1,ok2;
+    bool ok1,ok2;
     iid=ui->lineEdit_iid->text().toInt();
     type=ui->lineEdit_type->text();
     brand=ui->lineEdit_brand->text();
@@ -125,11 +124,6 @@ void ItemInfo::on_pushButton_delete_clicked()
     if(qry.exec()){
         QMessageBox::information(this,tr("Delete"),tr("Deleted"));
         ui->lineEdit_iid->clear();
-        ui->lineEdit_brand->clear();
-        ui->lineEdit_item->clear();
-        ui->lineEdit_type->clear();
-        ui->lineEdit_price->clear();
-        ui->lineEdit_qty->clear();
     }
     else
     {
