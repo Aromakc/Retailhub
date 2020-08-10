@@ -4,12 +4,13 @@
 #include<iostream>
 #include<QMessageBox>
 
-ItemInfo::ItemInfo(QString inputUsername,QWidget *parent) :
+ItemInfo::ItemInfo(QWidget *parent) : //ItemInfo::ItemInfo(QString inputUsername,QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::ItemInfo),
-    username(inputUsername)
+    ui(new Ui::ItemInfo)
+   // username(inputUsername)
 {
     ui->setupUi(this);
+    //this->setWindowState(Qt::WindowFullScreen);
     if(!conn.connOpen())
         ui->label_vstatus->setText("Failed to locate database!");
     else
@@ -55,7 +56,7 @@ void ItemInfo::on_pushButton_clicked()
     QSqlQuery qry;
     //qry.prepare("INSERT into Inventory (ID,Type,Brand,Items,Price,Quantity) values ('"+iid+"','"+type+"','"+brand+"','"+item+"','"+price+"','"+quantity+"')");
 
-    qry.prepare("INSERT INTO Inventory (ID,Type,Brand,Items,Price,Quantity) VALUES(?, ?, ?, ?, ?, ?)");
+    /*qry.prepare("INSERT INTO Inventory (ID,Type,Brand,Items,Price,Quantity) VALUES(?, ?, ?, ?, ?, ?)");
 
     qry.addBindValue(iid);
     qry.addBindValue(type);
@@ -63,9 +64,11 @@ void ItemInfo::on_pushButton_clicked()
     qry.addBindValue(item);
     qry.addBindValue(price);
     qry.addBindValue(quantity);
+    qDebug()<< qry.executedQuery();*/
 
-    if(qry.exec()){
-        QMessageBox::information(this,tr("Save"),tr("Saved"));
+
+    if(qry.exec("SELECT ID,Type,Brand,Items,Price,Quantity from Inventory")){
+        //QMessageBox::information(this,tr("Save"),tr("Saved"));
         ui->lineEdit_brand->clear();
         ui->lineEdit_iid->clear();
         ui->lineEdit_item->clear();
@@ -77,11 +80,13 @@ void ItemInfo::on_pushButton_clicked()
     {
         QMessageBox::critical(this,tr("Error."),qry.lastError().text());         //?????????
     }
+
     }
      else
     {
         QMessageBox::information(this, "Invalid Input", "Enter Proper Number");
     }
+
 }
 
 // UPDATE DATABASE

@@ -2,6 +2,7 @@
 #include"iteminfo.h"
 #include "ui_login.h"
 #include "createaccount.h"
+#include<QStatusBar>
 
 #include <QMessageBox>
 
@@ -16,10 +17,10 @@ Login::Login(QWidget *parent)
     //QSqlDatabase mydb=QSqlDatabase::addDatabase("QSQLITE");                    // old one
     //mydb.setDatabaseName("C:/Users/suwas/Documents/Sqlite_DB/items.db");
 
-    if(!connOpen())
-        ui->label->setText("Failed to locate database!");
+    /*if(!connOpen())
+        ui->statusBar->setMessage("Failed to locate database!");
     else
-        ui->label->setText("Connected...");
+        ui->statusBar->setText("Connected...");*/
 }
 
 Login::~Login()
@@ -36,15 +37,15 @@ void Login::on_pushButton_clicked()
     if(username ==  "a" && password == "a") {
         //QMessageBox::information(this, "Login", "Username and password is correct");
 
-        //this->close();                   // hide information dialog.
-        ItemInfo iteminfo(username);
+        this->hide();                   // hide information dialog.
+        ItemInfo iteminfo;
         iteminfo.setModal(true);
         iteminfo.exec();
 
     }
     else {
-        QMessageBox::warning(this,"Login", "Username and password is not correct");
-    }
+        ui->statusbar->showMessage("Login error!");
+         }
 
 }
 

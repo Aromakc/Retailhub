@@ -11,7 +11,6 @@ CreateAccount::CreateAccount(QWidget *parent) :
         ui->label_status->setText("Failed to locate database!");
     else
         ui->label_status->setText("Connected...");
-    //conn.connOpen();
 }
 
 CreateAccount::~CreateAccount()
@@ -21,43 +20,35 @@ CreateAccount::~CreateAccount()
 }
 
 void CreateAccount::on_pushButton_create_clicked()
-/*{
+{
 
-        QString name,address,password,username,gender;
-        qint64 phone;
+        QString name,address,password,username,gender,phone;
         username=ui->line_username->text();
         password=ui->line_password->text();
         name=ui->line_name->text();
         address=ui->line_address->text();
-        phone=ui->line_phone->text().toInt();
+        phone=ui->line_phone->text();
         if(ui->radioButton_M->isChecked())
-        { gender='M';}
+        { gender="Male";}
         if(ui->radioButton_F->isChecked())
-        { gender='F';}
-
-
+        { gender="Female";}
 
         QSqlQuery query;
-        query.prepare("INSERT into Users (username,password,Name,Gender,Address,Phone_Number) values ('"+username+"','"+password+"','"+name+"','"+gender+"','"+address+"',"+phone+")");
+        QString users_entry="INSERT into Users(username,password,name,gender,address,phone) values ('"+username+"','"+password+"','"+name+"','"+gender+"','"+address+"',"+phone+")";
 
-        /*query.prepare("INSERT into Users (username,password,Name,Gender,Address,Phone_Number) VALUES(?, ?, ?, ?, ? ,?)");
-
-        query.addBindValue(username);
-        query.addBindValue(password);
-        query.addBindValue(name);
-        query.addBindValue(gender);
-        query.addBindValue(address);
-        query.addBindValue(phone);
-
-
-        if(query.exec()){
-             QMessageBox::information(this,tr("Save"),tr("Saved"));}
+          if(query.exec(users_entry)){
+             QMessageBox::information(this,tr("Save"),tr("Saved"));
+             qDebug()<<query.executedQuery();
+            }
         else
         {
+
             QMessageBox::critical(this,tr("Error."),query.lastError().text());
         }
-}*/
-{
+
+}
+
+/*{
     QString name,address,password,username,gender;
     qint64 phone;
     bool ok;
@@ -91,7 +82,7 @@ void CreateAccount::on_pushButton_create_clicked()
         ui->line_username->clear();
         ui->line_password->clear();
         ui->line_address->clear();
-        ui->line_phone->clear();*/
+        ui->line_phone->clear();
         }
     else
     {
@@ -102,6 +93,6 @@ void CreateAccount::on_pushButton_create_clicked()
     {
         QMessageBox::information(this, "Invalid Input", "Enter Proper Number");
     }
-}
+}*/
 
 

@@ -13,7 +13,7 @@ class ItemInfo : public QDialog
     Q_OBJECT
 
 public:
-    explicit ItemInfo(QString inputUsername, QWidget *parent = nullptr);
+    explicit ItemInfo(QWidget *parent = nullptr); //(QString inputUsername,
     ~ItemInfo();
 
 private slots:
