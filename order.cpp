@@ -12,3 +12,9 @@ Order::~Order()
 {
     delete ui;
 }
+
+
+void Order::on_create_order_clicked()
+{
+
+}

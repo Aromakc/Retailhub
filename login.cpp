@@ -1,5 +1,6 @@
 #include "login.h"
 #include"iteminfo.h"
+#include"order.h"
 #include "ui_login.h"
 #include "createaccount.h"
 #include<QStatusBar>
@@ -54,4 +55,11 @@ void Login::on_pushButton_2_clicked()
     CreateAccount createaccount;
     createaccount.setModal(true);
     createaccount.exec();
+}
+
+void Login::on_pushButton_3_clicked()
+{
+    Order order;
+    order.setModal(true);
+    order.exec();
 }
