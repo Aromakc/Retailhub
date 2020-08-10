@@ -2,6 +2,7 @@
 #define ORDER_H
 
 #include <QDialog>
+#include"login.h"
 
 namespace Ui {
 class Order;
@@ -17,8 +18,12 @@ public:
 
 private slots:
 
+    void on_create_order_clicked();
+
+
 private:
     Ui::Order *ui;
+    Login conn;
 };
 
 #endif // ORDER_H

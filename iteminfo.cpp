@@ -56,7 +56,7 @@ void ItemInfo::on_pushButton_clicked()
     QSqlQuery qry;
     //qry.prepare("INSERT into Inventory (ID,Type,Brand,Items,Price,Quantity) values ('"+iid+"','"+type+"','"+brand+"','"+item+"','"+price+"','"+quantity+"')");
 
-    /*qry.prepare("INSERT INTO Inventory (ID,Type,Brand,Items,Price,Quantity) VALUES(?, ?, ?, ?, ?, ?)");
+    qry.prepare("INSERT INTO Inventory (ID,Type,Brand,Items,Price,Quantity) VALUES(?, ?, ?, ?, ?, ?)");
 
     qry.addBindValue(iid);
     qry.addBindValue(type);
@@ -64,10 +64,10 @@ void ItemInfo::on_pushButton_clicked()
     qry.addBindValue(item);
     qry.addBindValue(price);
     qry.addBindValue(quantity);
-    qDebug()<< qry.executedQuery();*/
+    qDebug()<< qry.executedQuery();
 
 
-    if(qry.exec("SELECT ID,Type,Brand,Items,Price,Quantity from Inventory")){
+    if(qry.exec()){
         //QMessageBox::information(this,tr("Save"),tr("Saved"));
         ui->lineEdit_brand->clear();
         ui->lineEdit_iid->clear();

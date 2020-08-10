@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>785</width>
-    <height>503</height>
+    <height>513</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="username">
    <property name="geometry">
     <rect>
      <x>60</x>
@@ -39,11 +39,11 @@
     <string>Customer Name</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="phone">
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>116</y>
+     <y>120</y>
      <width>101</width>
      <height>16</height>
     </rect>
@@ -52,7 +52,7 @@
     <string>Customer Phone</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="product">
    <property name="geometry">
     <rect>
      <x>60</x>
@@ -65,7 +65,7 @@
     <string>Product</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="quantity">
    <property name="geometry">
     <rect>
      <x>324</x>
@@ -78,7 +78,7 @@
     <string>Qty</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_5">
+  <widget class="QLabel" name="rate">
    <property name="geometry">
     <rect>
      <x>398</x>
@@ -91,7 +91,7 @@
     <string>Rate</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_6">
+  <widget class="QLabel" name="amount">
    <property name="geometry">
     <rect>
      <x>475</x>
@@ -104,7 +104,7 @@
     <string>Amount</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_7">
+  <widget class="QLabel" name="grossamount">
    <property name="geometry">
     <rect>
      <x>473</x>
@@ -117,7 +117,7 @@
     <string>Gross Amount</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_9">
+  <widget class="QLabel" name="scharge">
    <property name="geometry">
     <rect>
      <x>473</x>
@@ -130,7 +130,7 @@
     <string>S-Charge 5%</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_10">
+  <widget class="QLabel" name="vat">
    <property name="geometry">
     <rect>
      <x>473</x>
@@ -143,7 +143,7 @@
     <string>VAT 13%</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_11">
+  <widget class="QLabel" name="discount">
    <property name="geometry">
     <rect>
      <x>473</x>
@@ -156,7 +156,7 @@
     <string>Discount</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_12">
+  <widget class="QLabel" name="nettotal">
    <property name="geometry">
     <rect>
      <x>473</x>
@@ -169,7 +169,7 @@
     <string>Net Amount</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBox">
+  <widget class="QComboBox" name="comboBox_user">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -179,7 +179,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBox_2">
+  <widget class="QComboBox" name="comboBox_prod">
    <property name="geometry">
     <rect>
      <x>60</x>
@@ -189,7 +189,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="le_qty">
    <property name="geometry">
     <rect>
      <x>316</x>
@@ -199,7 +199,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="le_discount">
    <property name="geometry">
     <rect>
      <x>588</x>
@@ -209,7 +209,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
+  <widget class="QLineEdit" name="le_amount">
    <property name="geometry">
     <rect>
      <x>470</x>
@@ -219,7 +219,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_5">
+  <widget class="QLineEdit" name="le_gross">
    <property name="geometry">
     <rect>
      <x>588</x>
@@ -229,7 +229,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_6">
+  <widget class="QLineEdit" name="le_scharge">
    <property name="geometry">
     <rect>
      <x>588</x>
@@ -239,7 +239,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_7">
+  <widget class="QLineEdit" name="le_vat">
    <property name="geometry">
     <rect>
      <x>588</x>
@@ -249,7 +249,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_8">
+  <widget class="QLineEdit" name="le_total">
    <property name="geometry">
     <rect>
      <x>588</x>
@@ -259,7 +259,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_10">
+  <widget class="QLineEdit" name="le_phone">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -269,7 +269,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_11">
+  <widget class="QLineEdit" name="le_name">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -279,7 +279,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_4">
+  <widget class="QLineEdit" name="le_rate">
    <property name="geometry">
     <rect>
      <x>390</x>
@@ -287,6 +287,32 @@
      <width>61</width>
      <height>26</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="create_order">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>430</y>
+     <width>80</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Create Order</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cancel_order">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>430</y>
+     <width>80</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
    </property>
   </widget>
  </widget>
