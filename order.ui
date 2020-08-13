@@ -107,8 +107,8 @@
   <widget class="QLabel" name="grossamount">
    <property name="geometry">
     <rect>
-     <x>473</x>
-     <y>309</y>
+     <x>463</x>
+     <y>279</y>
      <width>91</width>
      <height>16</height>
     </rect>
@@ -117,24 +117,11 @@
     <string>Gross Amount</string>
    </property>
   </widget>
-  <widget class="QLabel" name="scharge">
-   <property name="geometry">
-    <rect>
-     <x>473</x>
-     <y>339</y>
-     <width>91</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>S-Charge 5%</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="vat">
    <property name="geometry">
     <rect>
-     <x>473</x>
-     <y>369</y>
+     <x>463</x>
+     <y>309</y>
      <width>91</width>
      <height>16</height>
     </rect>
@@ -146,8 +133,8 @@
   <widget class="QLabel" name="discount">
    <property name="geometry">
     <rect>
-     <x>473</x>
-     <y>399</y>
+     <x>463</x>
+     <y>339</y>
      <width>91</width>
      <height>16</height>
     </rect>
@@ -159,8 +146,8 @@
   <widget class="QLabel" name="nettotal">
    <property name="geometry">
     <rect>
-     <x>473</x>
-     <y>432</y>
+     <x>463</x>
+     <y>372</y>
      <width>91</width>
      <height>16</height>
     </rect>
@@ -202,8 +189,8 @@
   <widget class="QLineEdit" name="le_discount">
    <property name="geometry">
     <rect>
-     <x>588</x>
-     <y>399</y>
+     <x>578</x>
+     <y>339</y>
      <width>129</width>
      <height>24</height>
     </rect>
@@ -222,18 +209,8 @@
   <widget class="QLineEdit" name="le_gross">
    <property name="geometry">
     <rect>
-     <x>588</x>
-     <y>307</y>
-     <width>130</width>
-     <height>24</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="le_scharge">
-   <property name="geometry">
-    <rect>
-     <x>588</x>
-     <y>339</y>
+     <x>578</x>
+     <y>277</y>
      <width>130</width>
      <height>24</height>
     </rect>
@@ -242,8 +219,8 @@
   <widget class="QLineEdit" name="le_vat">
    <property name="geometry">
     <rect>
-     <x>588</x>
-     <y>371</y>
+     <x>578</x>
+     <y>311</y>
      <width>130</width>
      <height>20</height>
     </rect>
@@ -252,8 +229,8 @@
   <widget class="QLineEdit" name="le_total">
    <property name="geometry">
     <rect>
-     <x>588</x>
-     <y>430</y>
+     <x>578</x>
+     <y>370</y>
      <width>130</width>
      <height>24</height>
     </rect>
@@ -292,9 +269,9 @@
   <widget class="QPushButton" name="create_order">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>139</x>
      <y>430</y>
-     <width>80</width>
+     <width>91</width>
      <height>25</height>
     </rect>
    </property>
@@ -313,6 +290,23 @@
    </property>
    <property name="text">
     <string>Cancel</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>420</y>
+     <width>251</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(170, 85, 255);
+font: 75 9pt &quot;Gadugi&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Proceed Transaction</string>
    </property>
   </widget>
  </widget>
