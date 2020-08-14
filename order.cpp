@@ -3,7 +3,7 @@
 #include <QMessageBox>
 #include<iostream>
 #include<QDebug>
-#include<math.h>
+#include<QtMath>
 Order::Order(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Order)
@@ -70,7 +70,7 @@ void Order::on_create_order_clicked()
 }
 void Order::on_pushButton_clicked()
 {
-    qint32 rate,vat,discount,qty;
+    qfloat16 rate,vat,discount,qty;
     qfloat16 cal2,cal3,cal1;
 
     rate=ui->le_rate->text().toInt();
