@@ -281,6 +281,9 @@
    <property name="autoDefault">
     <bool>false</bool>
    </property>
+   <property name="default">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="cancel_order">
    <property name="geometry">
@@ -300,8 +303,11 @@
    <property name="autoDefault">
     <bool>false</bool>
    </property>
+   <property name="default">
+    <bool>true</bool>
+   </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="Proceed_Cal">
    <property name="geometry">
     <rect>
      <x>460</x>
@@ -309,10 +315,6 @@
      <width>251</width>
      <height>25</height>
     </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(170, 85, 255);
-font: 75 9pt &quot;Gadugi&quot;;</string>
    </property>
    <property name="text">
     <string>Proceed Transaction</string>

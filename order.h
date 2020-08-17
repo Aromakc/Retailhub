@@ -16,19 +16,20 @@ public:
     explicit Order(QWidget *parent = nullptr);
     ~Order();
 
-protected slots:
+public slots:
     void on_create_order_clicked();
 
 private slots:
 
 
-    void on_comboBox_user_currentIndexChanged(const QString &arg1);
+    void on_comboBox_user_currentIndexChanged(const QString &username);
 
-    void on_comboBox_prod_currentIndexChanged(const QString &arg1);
+    void on_comboBox_prod_currentIndexChanged(const QString &product_input);
 
-    void on_pushButton_clicked();
+    //void on_pushButton_clicked(const QString &arg1);
 
 
+    void on_Proceed_Cal_clicked();
 
 private:
     Ui::Order *ui;
