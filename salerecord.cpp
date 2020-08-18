@@ -12,3 +12,8 @@ SaleRecord::~SaleRecord()
 {
     delete ui;
 }
+void SaleRecord::setdates()
+{
+    ui->from_dateEdit->setDate(QDate::currentDate().addMonths(-1));
+    ui->to_dateEdit->setDate(QDate::currentDate());
+}

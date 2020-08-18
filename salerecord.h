@@ -16,6 +16,9 @@ public:
     ~SaleRecord();
 
 private:
+    void setdates();
+
+private:
     Ui::SaleRecord *ui;
 };
 
