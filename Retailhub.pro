@@ -20,19 +20,22 @@ SOURCES += \
     iteminfo.cpp \
     main.cpp \
     login.cpp \
-    order.cpp
+    order.cpp \
+    salerecord.cpp
 
 HEADERS += \
     createaccount.h \
     iteminfo.h \
     login.h \
-    order.h
+    order.h \
+    salerecord.h
 
 FORMS += \
     createaccount.ui \
     iteminfo.ui \
     login.ui \
-    order.ui
+    order.ui \
+    salerecord.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

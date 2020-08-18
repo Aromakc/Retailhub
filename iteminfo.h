@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include "login.h"
+#include"createaccount.h"
+#include"order.h"
 
 namespace Ui {
 class ItemInfo;
@@ -24,6 +26,10 @@ private slots:
     void on_update_clicked();
 
     void on_pushButton_delete_clicked();
+
+    void on_sales_order_clicked();
+
+    void on_create_account_clicked();
 
 private:
     Ui::ItemInfo *ui;

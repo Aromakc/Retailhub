@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include "login.h"
+#include"iteminfo.h"
+#include "order.h"
 
 namespace Ui {
 class CreateAccount;
@@ -16,8 +18,17 @@ public:
     explicit CreateAccount(QWidget *parent = nullptr);
     ~CreateAccount();
 
+private:
+    //helper
+    void resetForm();
+    bool addaccount();
+
 private slots:
     void on_pushButton_create_clicked();
+
+    void on_pushButton_vinv_clicked();
+
+    void on_sales_order_clicked();
 
 private:
     Ui::CreateAccount *ui;

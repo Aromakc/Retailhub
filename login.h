@@ -8,6 +8,7 @@
 #include <QDebug>
 #include<QFileInfo>
 
+
 //Header for iteminfo
 
 QT_BEGIN_NAMESPACE
@@ -40,6 +41,8 @@ public:
 public:
     Login(QWidget *parent = nullptr);
     ~Login();
+private:
+    void on_actionView_Inventory_triggered();
 
 private slots:
     void on_pushButton_clicked();

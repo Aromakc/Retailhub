@@ -31,6 +31,11 @@ private slots:
 
     void on_Proceed_Cal_clicked();
 
+    void on_pushButton_vinv_clicked();
+
+
+    void on_create_account_clicked();
+
 private:
     Ui::Order *ui;
     Login conn;

@@ -1,6 +1,7 @@
 ﻿#include "iteminfo.h"
 #include "ui_iteminfo.h"
-
+#include"order.h"
+#include "createaccount.h"
 #include<iostream>
 #include<QMessageBox>
 
@@ -134,4 +135,20 @@ void ItemInfo::on_pushButton_delete_clicked()
     {
         QMessageBox::critical(this,tr("Error."),qry.lastError().text());
     }
+}
+
+void ItemInfo::on_sales_order_clicked()
+{
+     this->close();
+    Order order;
+    order.setModal(true);
+    order.exec();
+}
+
+void ItemInfo::on_create_account_clicked()
+{
+     this->close();
+    CreateAccount createaccount;
+    createaccount.setModal(true);
+    createaccount.exec();
 }

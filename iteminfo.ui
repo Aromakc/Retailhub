@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1900</width>
-    <height>1000</height>
+    <width>1000</width>
+    <height>700</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,8 +18,8 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>1900</width>
-    <height>1000</height>
+    <width>400</width>
+    <height>400</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -43,9 +43,9 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>30</y>
-     <width>111</width>
-     <height>28</height>
+     <y>60</y>
+     <width>151</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="font">
@@ -289,17 +289,64 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="create_account">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>70</y>
-     <width>80</width>
-     <height>25</height>
+     <y>210</y>
+     <width>151</width>
+     <height>61</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+     <strikeout>false</strikeout>
+    </font>
+   </property>
    <property name="text">
-    <string>salaes</string>
+    <string>Create Account</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="sales_order">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>130</y>
+     <width>151</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+     <strikeout>false</strikeout>
+    </font>
+   </property>
+   <property name="text">
+    <string>Sales Order</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="report">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>280</y>
+     <width>151</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+     <strikeout>false</strikeout>
+    </font>
+   </property>
+   <property name="text">
+    <string>Info History</string>
    </property>
   </widget>
  </widget>

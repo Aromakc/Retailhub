@@ -1,7 +1,8 @@
 #include "login.h"
+#include "ui_login.h"
+
 #include"iteminfo.h"
 #include"order.h"
-#include "ui_login.h"
 #include "createaccount.h"
 #include<QStatusBar>
 
@@ -49,7 +50,14 @@ void Login::on_pushButton_clicked()
          }
 
 }
-
+void Login::on_actionView_Inventory_triggered()
+{
+    //ItemInfo iteminfo;
+     ItemInfo* iteminfo  =   new ItemInfo(this);
+     iteminfo->setAttribute(Qt::WA_DeleteOnClose);
+    iteminfo->setModal(true);
+    iteminfo->exec();
+}
 void Login::on_pushButton_2_clicked()
 {
     CreateAccount createaccount;

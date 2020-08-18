@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>632</width>
-    <height>600</height>
+    <height>522</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>30</y>
+      <x>210</x>
+      <y>130</y>
       <width>241</width>
       <height>161</height>
      </rect>
@@ -125,8 +125,8 @@ gridline-color: rgb(0, 255, 0);</string>
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>250</y>
+      <x>390</x>
+      <y>520</y>
       <width>241</width>
       <height>181</height>
      </rect>
@@ -248,8 +248,8 @@ border-color: rgb(255, 255, 255);</string>
    <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>260</y>
+      <x>50</x>
+      <y>530</y>
       <width>80</width>
       <height>25</height>
      </rect>
@@ -268,8 +268,42 @@ border-color: rgb(255, 255, 255);</string>
      <height>25</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuInventory">
+    <property name="title">
+     <string>Inventory</string>
+    </property>
+    <addaction name="actionView_Inventory"/>
+   </widget>
+   <widget class="QMenu" name="menuSales_Order">
+    <property name="title">
+     <string>Sales Order</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuAccount">
+    <property name="title">
+     <string>Account</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
+    <addaction name="separator"/>
+    <addaction name="actionCustomer_Account"/>
+   </widget>
+   <addaction name="menuAccount"/>
+   <addaction name="menuInventory"/>
+   <addaction name="menuSales_Order"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionCustomer_Account">
+   <property name="text">
+    <string>Customer Account</string>
+   </property>
+  </action>
+  <action name="actionView_Inventory">
+   <property name="text">
+    <string>View Inventory</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

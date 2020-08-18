@@ -1,6 +1,8 @@
 #include "order.h"
 #include "ui_order.h"
 #include <QMessageBox>
+#include"iteminfo.h"
+#include "createaccount.h"
 #include<iostream>
 #include<QDebug>
 #include<QtMath>
@@ -145,3 +147,22 @@ void Order::on_Proceed_Cal_clicked()
     ui->le_gross->setText(amount);
     ui->le_total->setText(total);
 }
+
+void Order::on_pushButton_vinv_clicked()
+{
+    this->close();
+    ItemInfo iteminfo;
+    iteminfo.setModal(true);
+    iteminfo.exec();
+}
+
+
+
+void Order::on_create_account_clicked()
+{
+    this->close();
+    CreateAccount createaccount;
+    createaccount.setModal(true);
+    createaccount.exec();
+}
+
