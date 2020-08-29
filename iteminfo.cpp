@@ -1,7 +1,5 @@
 ﻿#include "iteminfo.h"
 #include "ui_iteminfo.h"
-#include"order.h"
-#include "createaccount.h"
 #include<iostream>
 #include<QMessageBox>
 
@@ -16,26 +14,23 @@ ItemInfo::ItemInfo(QWidget *parent) : //ItemInfo::ItemInfo(QString inputUsername
         ui->label_vstatus->setText("Failed to locate database!");
     else
         ui->label_vstatus->setText("Connected...");
+    refresh_table();
 }
 
-ItemInfo::~ItemInfo()
+void ItemInfo::refresh_table()
 {
-    conn.connClose();
-    delete ui;
-}
-
-void ItemInfo::on_pushButton_vinv_clicked()
-{
-
     QSqlQueryModel* modal= new QSqlQueryModel();
     QSqlQuery* qry=new QSqlQuery();
     qry->prepare("select * from Inventory");
     qry->exec();
     modal->setQuery(*qry);
     ui->tableView->setModel(modal);
+}
 
-    qDebug() << (modal->rowCount());
-
+ItemInfo::~ItemInfo()
+{
+    conn.connClose();
+    delete ui;
 }
 
 // INPUT DATABASE
@@ -87,6 +82,7 @@ void ItemInfo::on_pushButton_clicked()
     {
         QMessageBox::information(this, "Invalid Input", "Enter Proper Number");
     }
+    refresh_table();
 
 }
 
@@ -117,6 +113,7 @@ void ItemInfo::on_update_clicked()
     {
         QMessageBox::critical(this,tr("Error."),qry.lastError().text());
     }
+    refresh_table();
 }
 
 // DELETE DATABASE
@@ -135,20 +132,5 @@ void ItemInfo::on_pushButton_delete_clicked()
     {
         QMessageBox::critical(this,tr("Error."),qry.lastError().text());
     }
-}
-
-void ItemInfo::on_sales_order_clicked()
-{
-     this->close();
-    Order order;
-    order.setModal(true);
-    order.exec();
-}
-
-void ItemInfo::on_create_account_clicked()
-{
-     this->close();
-    CreateAccount createaccount;
-    createaccount.setModal(true);
-    createaccount.exec();
+    refresh_table();
 }

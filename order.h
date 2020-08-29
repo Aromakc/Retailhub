@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include"login.h"
-
+#include<QDate>
 namespace Ui {
 class Order;
 }
@@ -18,6 +18,8 @@ public:
 
 public slots:
     void on_create_order_clicked();
+private:
+    QString currentdate();
 
 private slots:
 
@@ -31,10 +33,6 @@ private slots:
 
     void on_Proceed_Cal_clicked();
 
-    void on_pushButton_vinv_clicked();
-
-
-    void on_create_account_clicked();
 
 private:
     Ui::Order *ui;

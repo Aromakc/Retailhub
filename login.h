@@ -7,8 +7,9 @@
 #include <QtSql>
 #include <QDebug>
 #include<QFileInfo>
-
-
+#include<iostream>
+#include<ctime>
+#include<QDate>
 //Header for iteminfo
 
 QT_BEGIN_NAMESPACE
@@ -42,14 +43,17 @@ public:
     Login(QWidget *parent = nullptr);
     ~Login();
 private:
-    void on_actionView_Inventory_triggered();
+    QString currentdate();
 
 private slots:
+
     void on_pushButton_clicked();
 
     void on_pushButton_2_clicked();
 
     void on_pushButton_3_clicked();
+
+    void on_pushButton_4_clicked();
 
 private:
     Ui::Login *ui;

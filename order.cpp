@@ -109,7 +109,14 @@ void Order::on_create_order_clicked()
     phone=ui->le_phone->text();
     total=ui->le_total->text();
 
-    QString input_order="INSERT into Orders (username,Name,Sold_Item,Total_Price) values ('"+usernames+"','"+name+"','"+products+"',"+total+")";
+    QDate date = QDate::currentDate();
+    QString date_set=date.toString("yyyy--MM--dd");
+
+    QTime time= QTime::currentTime();
+    QString time_set=time.toString();
+
+    QString input_order="INSERT into Orders (username,Name,Sold_Item,Total_Price,Date,Time) values "
+                        "('"+usernames+"','"+name+"','"+products+"',"+total+",'"+date_set+"','"+time_set+"')";
 
       if(query.exec(input_order)){
          QMessageBox::information(this,tr("Save"),tr("Saved"));
@@ -147,22 +154,13 @@ void Order::on_Proceed_Cal_clicked()
     ui->le_gross->setText(amount);
     ui->le_total->setText(total);
 }
+QString Order::currentdate() {
+    time_t     now = time(0);
+    struct tm  tstruct;
+    char       buf[80];
+    tstruct = *localtime(&now);
+    strftime(buf, sizeof(buf), "%d-%m-%Y", &tstruct);
 
-void Order::on_pushButton_vinv_clicked()
-{
-    this->close();
-    ItemInfo iteminfo;
-    iteminfo.setModal(true);
-    iteminfo.exec();
-}
-
-
-
-void Order::on_create_account_clicked()
-{
-    this->close();
-    CreateAccount createaccount;
-    createaccount.setModal(true);
-    createaccount.exec();
+    return buf;
 }
 

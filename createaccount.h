@@ -3,8 +3,6 @@
 
 #include <QDialog>
 #include "login.h"
-#include"iteminfo.h"
-#include "order.h"
 
 namespace Ui {
 class CreateAccount;

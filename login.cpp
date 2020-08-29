@@ -3,10 +3,14 @@
 
 #include"iteminfo.h"
 #include"order.h"
+#include"salerecord.h"
 #include "createaccount.h"
-#include<QStatusBar>
 
+#include<QStatusBar>
 #include <QMessageBox>
+#include<QDateTime>
+#include<QTimer>
+#include<time.h>
 
 Login::Login(QWidget *parent)
     : QMainWindow(parent)
@@ -23,6 +27,13 @@ Login::Login(QWidget *parent)
         ui->statusBar->setMessage("Failed to locate database!");
     else
         ui->statusBar->setText("Connected...");*/
+
+
+    QDate date= QDate::currentDate();
+    QString date_text=date.toString("dd MMM yyyy");
+
+    //ui->label->setText(currentdate());
+    ui->label->setText(date_text);
 }
 
 Login::~Login()
@@ -30,34 +41,24 @@ Login::~Login()
     delete ui;
 }
 
+QString Login::currentdate() {
+    time_t     now = time(0);
+    struct tm  tstruct;
+    char       buf[80];
+    tstruct = *localtime(&now);
+    // Visit http://en.cppreference.com/w/cpp/chrono/c/strftime
+    // for more information about date/time format
+    strftime(buf, sizeof(buf), "%d-%m-%Y", &tstruct);
 
+    return buf;
+}
 void Login::on_pushButton_clicked()
 {
-    QString username = ui->lineEdit_username->text();
-    QString password = ui->lineEdit_password->text();
-
-    if(username ==  "a" && password == "a") {
-        //QMessageBox::information(this, "Login", "Username and password is correct");
-
-        this->hide();                   // hide information dialog.
         ItemInfo iteminfo;
         iteminfo.setModal(true);
         iteminfo.exec();
-
-    }
-    else {
-        ui->statusbar->showMessage("Login error!");
-         }
-
 }
-void Login::on_actionView_Inventory_triggered()
-{
-    //ItemInfo iteminfo;
-     ItemInfo* iteminfo  =   new ItemInfo(this);
-     iteminfo->setAttribute(Qt::WA_DeleteOnClose);
-    iteminfo->setModal(true);
-    iteminfo->exec();
-}
+
 void Login::on_pushButton_2_clicked()
 {
     CreateAccount createaccount;
@@ -66,6 +67,13 @@ void Login::on_pushButton_2_clicked()
 }
 
 void Login::on_pushButton_3_clicked()
+{
+    SaleRecord order;
+    order.setModal(true);
+    order.exec();
+}
+
+void Login::on_pushButton_4_clicked()
 {
     Order order;
     order.setModal(true);

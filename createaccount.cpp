@@ -66,18 +66,4 @@ void CreateAccount::on_pushButton_create_clicked()
 
 
 
-void CreateAccount::on_pushButton_vinv_clicked()
-{
-    this->close();
-    ItemInfo iteminfo;
-    iteminfo.setModal(true);
-    iteminfo.exec();
-}
 
-void CreateAccount::on_sales_order_clicked()
-{
-     this->close();
-    Order order;
-    order.setModal(true);
-    order.exec();
-}
