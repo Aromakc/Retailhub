@@ -24,9 +24,7 @@ private:
 private slots:
     void on_pushButton_create_clicked();
 
-    void on_pushButton_vinv_clicked();
 
-    void on_sales_order_clicked();
 
 private:
     Ui::CreateAccount *ui;
