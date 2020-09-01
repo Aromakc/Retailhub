@@ -10,6 +10,7 @@
 #include<iostream>
 #include<ctime>
 #include<QDate>
+#include<QCompleter>
 //Header for iteminfo
 
 QT_BEGIN_NAMESPACE
@@ -45,6 +46,20 @@ public:
 private:
     QString currentdate();
 
+    //create account
+    void resetForm();
+    bool addaccount();
+
+    //view inventory
+    void refresh_table();
+
+    //view record
+    void customernamecompleter();
+    void itemnamecompleter();
+    void companynamecompleter();
+    void setdates_record();
+
+
 private slots:
 
     void on_pushButton_clicked();
@@ -54,6 +69,43 @@ private slots:
     void on_pushButton_3_clicked();
 
     void on_pushButton_4_clicked();
+    void showtime();
+
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_create_clicked();
+
+
+    void on_Inventory_clicked();
+
+    void on_insert_sw3_clicked();
+
+    void on_update_sw3_clicked();
+
+    void on_delete_sw3_clicked();
+
+    void on_Sale_clicked();
+
+    void on_Record_clicked();
+
+    void on_Proceed_Cal_clicked();
+
+    void on_comboBox_user_currentIndexChanged(const QString &arg1);
+
+    void on_comboBox_prod_currentIndexChanged(const QString &arg1);
+
+    void on_create_order_clicked();
+
+    void on_generate_report_pushbutton_clicked();
+
+
+
+
+    void on_sortcustomerwise_clicked();
+
+    void on_sortbrandwise_clicked();
+
+    void on_sortitemwise_clicked();
 
 private:
     Ui::Login *ui;

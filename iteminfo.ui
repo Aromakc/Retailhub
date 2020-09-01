@@ -204,7 +204,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Save</string>
+    <string>Insert</string>
    </property>
   </widget>
   <widget class="QPushButton" name="update">
