@@ -63,14 +63,6 @@ void Login::on_pushButton_clicked()
         iteminfo.exec();
 }
 
-void Login::on_pushButton_2_clicked()
-{
-    /*CreateAccount createaccount;
-    createaccount.setModal(true);
-    createaccount.exec();*/
-    ui->stackedWidget->setCurrentIndex(1);
-}
-
 void Login::on_pushButton_3_clicked()
 {
     SaleRecord order;
@@ -91,13 +83,30 @@ void Login::on_pushButton_7_clicked()
     ui->stackedWidget_2->setCurrentIndex(0);
 }
 
+//DASHBOARD
+void Login::on_dashboard_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget_2->setCurrentIndex(0);
+}
+
+
 //addaccount
+void Login::on_customers_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget_2->setCurrentIndex(1);
+}
 void Login::on_pushButton_create_clicked()
 {
     if(addaccount()){
         QMessageBox::information(this, "Succesfull", "Account Created!");
         resetForm();
     }
+
+}
+void Login::on_pushButton_showcustomerinfo_clicked()
+{
 
 }
 bool Login::addaccount()
@@ -128,6 +137,7 @@ bool Login::addaccount()
     return true;
 
 }
+
 void Login::resetForm()
 {
     ui->line_username->clear();
@@ -517,3 +527,7 @@ void Login::on_sortitemwise_clicked()
     reportModel->setQuery(*qry);
     ui->tableView_report->setModel(reportModel);
 }
+
+
+
+

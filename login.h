@@ -64,7 +64,7 @@ private slots:
 
     void on_pushButton_clicked();
 
-    void on_pushButton_2_clicked();
+    void on_customers_clicked();
 
     void on_pushButton_3_clicked();
 
@@ -106,6 +106,10 @@ private slots:
     void on_sortbrandwise_clicked();
 
     void on_sortitemwise_clicked();
+
+    void on_dashboard_clicked();
+
+    void on_pushButton_showcustomerinfo_clicked();
 
 private:
     Ui::Login *ui;

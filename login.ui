@@ -33,7 +33,7 @@ font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="customers">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -113,7 +113,7 @@ border-color: rgb(255, 255, 255);</string>
       <string>Record</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_7">
+    <widget class="QPushButton" name="dashboard">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -333,17 +333,17 @@ border-color: rgb(204, 199, 221);</string>
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="geometry">
       <rect>
-       <x>240</x>
-       <y>-10</y>
+       <x>210</x>
+       <y>-20</y>
        <width>1621</width>
        <height>1071</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(170, 170, 255);</string>
+      <string notr="true">background-color: rgb(51, 72, 88);</string>
      </property>
      <property name="currentIndex">
-      <number>4</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="sw_dash">
       <widget class="QLabel" name="label">
@@ -364,14 +364,40 @@ border-color: rgb(204, 199, 221);</string>
       </widget>
      </widget>
      <widget class="QWidget" name="sw_create">
+      <property name="styleSheet">
+       <string notr="true">QWidget{color: rgb(255, 255, 255);}
+QLineEdit
+{
+    font: 10pt &quot;Helvetica&quot;;
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 2px;	
+	border-color: rgb(255, 255, 255);
+
+}
+
+QLineEdit:hover
+{
+	border-style: solid;
+	
+	border-width: 2px;	
+	border-color: rgb(85, 255, 255);
+
+}</string>
+      </property>
       <widget class="QLabel" name="label_6">
        <property name="geometry">
         <rect>
-         <x>440</x>
-         <y>120</y>
-         <width>61</width>
+         <x>160</x>
+         <y>117</y>
+         <width>101</width>
          <height>16</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 10pt &quot;Helvetica&quot;;
+color: rgb(255, 255, 255);
+</string>
        </property>
        <property name="text">
         <string>Username</string>
@@ -380,10 +406,10 @@ border-color: rgb(204, 199, 221);</string>
       <widget class="QLineEdit" name="line_username">
        <property name="geometry">
         <rect>
-         <x>510</x>
-         <y>120</y>
-         <width>180</width>
-         <height>22</height>
+         <x>300</x>
+         <y>110</y>
+         <width>221</width>
+         <height>31</height>
         </rect>
        </property>
        <property name="autoFillBackground">
@@ -402,11 +428,14 @@ border-color: rgb(204, 199, 221);</string>
       <widget class="QLabel" name="label_3">
        <property name="geometry">
         <rect>
-         <x>441</x>
-         <y>160</y>
-         <width>55</width>
+         <x>161</x>
+         <y>157</y>
+         <width>81</width>
          <height>16</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 10pt &quot;Helvetica&quot;;</string>
        </property>
        <property name="text">
         <string>Name</string>
@@ -415,11 +444,14 @@ border-color: rgb(204, 199, 221);</string>
       <widget class="QLabel" name="label_4">
        <property name="geometry">
         <rect>
-         <x>440</x>
-         <y>242</y>
+         <x>160</x>
+         <y>239</y>
          <width>91</width>
          <height>16</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 10pt &quot;Helvetica&quot;;</string>
        </property>
        <property name="text">
         <string>Phone No.</string>
@@ -428,11 +460,14 @@ border-color: rgb(204, 199, 221);</string>
       <widget class="QLabel" name="label_5">
        <property name="geometry">
         <rect>
-         <x>440</x>
-         <y>283</y>
-         <width>55</width>
+         <x>160</x>
+         <y>280</y>
+         <width>91</width>
          <height>16</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 10pt &quot;Helvetica&quot;;</string>
        </property>
        <property name="text">
         <string>Address</string>
@@ -441,30 +476,50 @@ border-color: rgb(204, 199, 221);</string>
       <widget class="QPushButton" name="pushButton_create">
        <property name="geometry">
         <rect>
-         <x>530</x>
-         <y>320</y>
-         <width>93</width>
-         <height>28</height>
+         <x>180</x>
+         <y>390</y>
+         <width>321</width>
+         <height>51</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">
-font: 8pt &quot;MS Shell Dlg 2&quot;;
-text-decoration: underline;
-color: rgb(85, 85, 255);</string>
+        <string notr="true">QPushButton#pushButton_create
+{
+    
+	font: 75 15pt &quot;Helvetica&quot;;
+	color: rgb(255, 57, 8);
+	background-color: rgb(243, 234, 255);
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 2px;	
+    border-color:rgb(243, 234, 255);
+
+}
+
+QPushButton#pushButton_create:hover
+{
+	border-style: solid;
+	
+	border-width: 5px;	
+	border-color: rgb(85, 255, 255);
+
+}</string>
        </property>
        <property name="text">
-        <string>Create</string>
+        <string>Create Account</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_7">
        <property name="geometry">
         <rect>
-         <x>440</x>
-         <y>200</y>
-         <width>55</width>
+         <x>160</x>
+         <y>197</y>
+         <width>81</width>
          <height>16</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 10pt &quot;Helvetica&quot;;</string>
        </property>
        <property name="text">
         <string>Gender</string>
@@ -473,21 +528,24 @@ color: rgb(85, 85, 255);</string>
       <widget class="QLineEdit" name="line_address">
        <property name="geometry">
         <rect>
-         <x>510</x>
-         <y>280</y>
-         <width>180</width>
-         <height>22</height>
+         <x>300</x>
+         <y>270</y>
+         <width>221</width>
+         <height>31</height>
         </rect>
        </property>
       </widget>
       <widget class="QRadioButton" name="radioButton_M">
        <property name="geometry">
         <rect>
-         <x>510</x>
-         <y>200</y>
+         <x>300</x>
+         <y>190</y>
          <width>95</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 10pt &quot;Helvetica&quot;;</string>
        </property>
        <property name="text">
         <string>Male</string>
@@ -496,8 +554,8 @@ color: rgb(85, 85, 255);</string>
       <widget class="QLabel" name="label_status">
        <property name="geometry">
         <rect>
-         <x>440</x>
-         <y>80</y>
+         <x>160</x>
+         <y>77</y>
          <width>55</width>
          <height>16</height>
         </rect>
@@ -509,21 +567,24 @@ color: rgb(85, 85, 255);</string>
       <widget class="QLineEdit" name="line_name">
        <property name="geometry">
         <rect>
-         <x>510</x>
-         <y>160</y>
-         <width>180</width>
-         <height>22</height>
+         <x>300</x>
+         <y>150</y>
+         <width>221</width>
+         <height>31</height>
         </rect>
        </property>
       </widget>
       <widget class="QRadioButton" name="radioButton_F">
        <property name="geometry">
         <rect>
-         <x>580</x>
-         <y>200</y>
+         <x>370</x>
+         <y>190</y>
          <width>95</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 10pt &quot;Helvetica&quot;;</string>
        </property>
        <property name="text">
         <string>Female</string>
@@ -532,12 +593,268 @@ color: rgb(85, 85, 255);</string>
       <widget class="QLineEdit" name="line_phone">
        <property name="geometry">
         <rect>
-         <x>510</x>
-         <y>240</y>
-         <width>180</width>
-         <height>22</height>
+         <x>300</x>
+         <y>230</y>
+         <width>221</width>
+         <height>31</height>
         </rect>
        </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_showcustomerinfo">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>470</y>
+         <width>321</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton#pushButton_showcustomerinfo
+{
+    
+	font: 75 15pt &quot;Helvetica&quot;;
+	color: rgb(0, 85, 127);
+	background-color: rgb(243, 234, 255);
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 2px;	
+    border-color:rgb(243, 234, 255);
+
+}
+
+QPushButton#pushButton_showcustomerinfo:hover
+{
+	border-style: solid;
+	
+	border-width: 5px;	
+	border-color: rgb(85, 255, 255);
+
+}</string>
+       </property>
+       <property name="text">
+        <string>Show customer info</string>
+       </property>
+      </widget>
+      <widget class="Line" name="line_6">
+       <property name="geometry">
+        <rect>
+         <x>48</x>
+         <y>48</y>
+         <width>21</width>
+         <height>621</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(204, 199, 221);</string>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="lineWidth">
+        <number>4</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+      <widget class="Line" name="line">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>40</y>
+         <width>201</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(204, 199, 221);</string>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="lineWidth">
+        <number>5</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="geometry">
+        <rect>
+         <x>650</x>
+         <y>60</y>
+         <width>691</width>
+         <height>851</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QGroupBox
+{
+	font: 10pt &quot;Helvetica&quot;;
+	border: 3px solid white;
+	color: rgb(0, 0, 0);
+	margin-top: 10px;
+	font: bold;
+}
+QGroupBox::title
+{
+	font: 20pt &quot;Helvetica&quot;;
+	subcontrol-origin: margin;
+    left: 20px;
+    padding: 0 3px 0 3px;
+color: rgb(255, 255, 255);}
+
+</string>
+       </property>
+       <property name="title">
+        <string>Customer Info</string>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+       <widget class="QLabel" name="group_name">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>70</y>
+          <width>471</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 75 30pt &quot;Helvetica&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Name</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="group_username">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>140</y>
+          <width>241</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 15pt &quot;Helvetica&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Username</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="group_address">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>180</y>
+          <width>241</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 15pt &quot;Helvetica&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Address</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="group_phone">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>220</y>
+          <width>201</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 15pt &quot;Helvetica&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Phone Number</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="group_paid">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>300</y>
+          <width>201</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 15pt &quot;Helvetica&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Spend amount ($):</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="group_balance">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>370</y>
+          <width>201</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 15pt &quot;Helvetica&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Due Balance($):</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="group_showpaid">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>290</y>
+          <width>171</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 15pt &quot;Helvetica&quot;;
+background-color: rgb(255, 255, 255);
+color: rgb(18, 202, 24);</string>
+        </property>
+        <property name="text">
+         <string>X</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="indent">
+         <number>2</number>
+        </property>
+       </widget>
+       <widget class="QLabel" name="group_showbalance">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>370</y>
+          <width>171</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 15pt &quot;Helvetica&quot;;
+background-color: rgb(255, 255, 255);
+color: rgb(203, 33, 0);</string>
+        </property>
+        <property name="text">
+         <string>X</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
       </widget>
      </widget>
      <widget class="QWidget" name="sw_inv">
@@ -1284,7 +1601,7 @@ border-width:15px;
         <string notr="true">QPushButton#generate_report_pushbutton
 {
     
-	font: 75 14pt &quot;Helvetica&quot;;
+	font: 75 15pt &quot;Helvetica&quot;;
 	color: rgb(255, 57, 8);
 	background-color: rgb(243, 234, 255);
 	border-radius: 10px;
@@ -1399,8 +1716,9 @@ background-color: rgb(29, 62, 115);</string>
       <enum>QFrame::Raised</enum>
      </property>
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
+     <widget class="QWidget" name="sw2_dashboard"/>
      <widget class="QWidget" name="sw2_customer">
       <widget class="QPushButton" name="pushButton_15">
        <property name="geometry">
