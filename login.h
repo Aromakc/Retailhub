@@ -10,7 +10,14 @@
 #include<iostream>
 #include<ctime>
 #include<QDate>
+
+#include<QStatusBar>
+#include <QMessageBox>
+#include<QDateTime>
+#include<QTimer>
+#include<time.h>
 #include<QCompleter>
+#include<iostream>
 //Header for iteminfo
 
 QT_BEGIN_NAMESPACE
@@ -71,7 +78,6 @@ private slots:
     void on_pushButton_4_clicked();
     void showtime();
 
-    void on_pushButton_7_clicked();
 
     void on_pushButton_create_clicked();
 
@@ -110,6 +116,8 @@ private slots:
     void on_dashboard_clicked();
 
     void on_pushButton_showcustomerinfo_clicked();
+
+    void on_cancel_order_clicked();
 
 private:
     Ui::Login *ui;
