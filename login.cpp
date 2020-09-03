@@ -50,26 +50,7 @@ QString Login::currentdate() {
 
     return buf;
 }
-void Login::on_pushButton_clicked()
-{
-        ItemInfo iteminfo;
-        iteminfo.setModal(true);
-        iteminfo.exec();
-}
 
-void Login::on_pushButton_3_clicked()
-{
-    SaleRecord order;
-    order.setModal(true);
-    order.exec();
-}
-
-void Login::on_pushButton_4_clicked()
-{
-    Order order;
-    order.setModal(true);
-    order.exec();
-}
 
 //DASHBOARD
 void Login::on_dashboard_clicked()
