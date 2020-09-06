@@ -532,6 +532,12 @@ void Login::on_sortitemwise_clicked()
 
 
 
-
-
-
+void Login::on_le_qty_textEdited(const QString &arg1)
+{
+   int cal=arg1.toInt();
+   int cal1= ui->le_rate->text().toInt();
+   int cal2=(cal1*cal);
+   std::cout<<cal2;
+   QString cal3=QString::number(cal2);
+    ui->le_amount->setText(cal3);
+}

@@ -115,6 +115,9 @@ private slots:
 
     void on_cancel_order_clicked();
 
+
+    void on_le_qty_textEdited(const QString &arg1);
+
 private:
     Ui::Login *ui;
 
