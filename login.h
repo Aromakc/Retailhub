@@ -17,7 +17,14 @@
 #include<QTimer>
 #include<time.h>
 #include<QCompleter>
-#include<iostream>
+#include<QPrinter>
+#include<QPrintDialog>
+#include<qtrpt.h>
+#include<QtWidgets>
+#include<QTableView>
+#include<QTableWidget>
+#include<QtMath>
+
 //Header for iteminfo
 
 QT_BEGIN_NAMESPACE
@@ -118,7 +125,20 @@ private slots:
 
     void on_le_qty_textEdited(const QString &arg1);
 
+
+    void on_cart_clicked();
+
+    //pdf
+    void setDSInfo(DataSetInfo &dsInfo);
+
+
 private:
+    enum{
+        PRODUCT,
+        QTY,
+        RATE,
+        AMOUNT,
+    };
     Ui::Login *ui;
 
 };

@@ -285,21 +285,113 @@ border-color: rgb(204, 199, 221);</string>
       <number>3</number>
      </property>
      <widget class="QWidget" name="sw_dash">
-      <widget class="QLabel" name="label">
+      <widget class="QFrame" name="frame_4">
        <property name="geometry">
         <rect>
-         <x>260</x>
-         <y>140</y>
-         <width>861</width>
-         <height>241</height>
+         <x>80</x>
+         <y>70</y>
+         <width>371</width>
+         <height>131</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">font: 36pt &quot;MS Shell Dlg 2&quot;;</string>
+        <string notr="true">background-color: rgb(19, 62, 255);
+font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
        </property>
-       <property name="text">
-        <string>Home Screen! Need to update         </string>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
        </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLabel" name="total_stocks">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>80</y>
+          <width>181</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 75 20pt &quot;Helvetica&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Total Stocks:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="total_stocks_2">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>80</y>
+          <width>51</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 75 20pt &quot;Helvetica&quot;;</string>
+        </property>
+        <property name="text">
+         <string>?</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QFrame" name="frame_5">
+       <property name="geometry">
+        <rect>
+         <x>480</x>
+         <y>70</y>
+         <width>361</width>
+         <height>131</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(255, 125, 65);</string>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLabel" name="label_17">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>80</y>
+          <width>211</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 75 20pt &quot;Helvetica&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Out of Stocks:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="total_stocks_3">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>80</y>
+          <width>51</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 75 20pt &quot;Helvetica&quot;;</string>
+        </property>
+        <property name="text">
+         <string>?</string>
+        </property>
+       </widget>
       </widget>
      </widget>
      <widget class="QWidget" name="sw_create">
@@ -1074,34 +1166,13 @@ QLineEdit:hover
        <property name="geometry">
         <rect>
          <x>1006</x>
-         <y>562</y>
+         <y>530</y>
          <width>111</width>
          <height>20</height>
         </rect>
        </property>
        <property name="text">
         <string>Net Amount</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="le_gross">
-       <property name="geometry">
-        <rect>
-         <x>1122</x>
-         <y>438</y>
-         <width>130</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLineEdit
-{
-    font: 10pt &quot;Helvetica&quot;;
-	border-radius: 5px;
-	border-style: solid;
-	background-color: rgb(76, 96, 110);
-}
-
-</string>
        </property>
       </widget>
       <widget class="QLabel" name="product">
@@ -1156,24 +1227,11 @@ QLineEdit:hover
         <string notr="true">font: 10pt &quot;Helvetica&quot;;</string>
        </property>
       </widget>
-      <widget class="QLabel" name="discount">
-       <property name="geometry">
-        <rect>
-         <x>1029</x>
-         <y>524</y>
-         <width>91</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Discount</string>
-       </property>
-      </widget>
       <widget class="QPushButton" name="Proceed_Cal">
        <property name="geometry">
         <rect>
          <x>1004</x>
-         <y>660</y>
+         <y>640</y>
          <width>251</width>
          <height>35</height>
         </rect>
@@ -1182,23 +1240,10 @@ QLineEdit:hover
         <string>Proceed Transaction</string>
        </property>
       </widget>
-      <widget class="QLabel" name="grossamount">
-       <property name="geometry">
-        <rect>
-         <x>980</x>
-         <y>440</y>
-         <width>131</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Gross Amount</string>
-       </property>
-      </widget>
       <widget class="QLabel" name="amount">
        <property name="geometry">
         <rect>
-         <x>750</x>
+         <x>799</x>
          <y>340</y>
          <width>110</width>
          <height>20</height>
@@ -1211,20 +1256,20 @@ QLineEdit:hover
       <widget class="QLabel" name="vat">
        <property name="geometry">
         <rect>
-         <x>1024</x>
-         <y>484</y>
+         <x>1010</x>
+         <y>490</y>
          <width>91</width>
          <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>VAT 13%</string>
+        <string>VAT</string>
        </property>
       </widget>
       <widget class="QLabel" name="rate">
        <property name="geometry">
         <rect>
-         <x>646</x>
+         <x>710</x>
          <y>340</y>
          <width>90</width>
          <height>16</height>
@@ -1237,9 +1282,9 @@ QLineEdit:hover
       <widget class="QLineEdit" name="le_qty">
        <property name="geometry">
         <rect>
-         <x>450</x>
+         <x>580</x>
          <y>370</y>
-         <width>161</width>
+         <width>81</width>
          <height>31</height>
         </rect>
        </property>
@@ -1260,7 +1305,7 @@ QLineEdit:hover
        <property name="geometry">
         <rect>
          <x>1016</x>
-         <y>770</y>
+         <y>700</y>
          <width>131</width>
          <height>31</height>
         </rect>
@@ -1275,11 +1320,11 @@ QLineEdit:hover
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QLineEdit" name="le_discount">
+      <widget class="QLineEdit" name="total">
        <property name="geometry">
         <rect>
-         <x>1124</x>
-         <y>558</y>
+         <x>1150</x>
+         <y>526</y>
          <width>129</width>
          <height>30</height>
         </rect>
@@ -1295,32 +1340,10 @@ QLineEdit:hover
 </string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="le_total">
-       <property name="geometry">
-        <rect>
-         <x>1124</x>
-         <y>518</y>
-         <width>130</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QLineEdit
-{
-    font: 10pt &quot;Helvetica&quot;;
-	border-radius: 2px;
-	border-style: solid;
-	border-width: 2px;	
-	border-color: rgb(255, 255, 255);
-
-}
-</string>
-       </property>
-      </widget>
       <widget class="QLineEdit" name="le_amount">
        <property name="geometry">
         <rect>
-         <x>748</x>
+         <x>797</x>
          <y>370</y>
          <width>121</width>
          <height>31</height>
@@ -1341,7 +1364,7 @@ QLineEdit:hover
        <property name="geometry">
         <rect>
          <x>1167</x>
-         <y>770</y>
+         <y>700</y>
          <width>80</width>
          <height>31</height>
         </rect>
@@ -1364,7 +1387,7 @@ QLineEdit:hover
         <rect>
          <x>260</x>
          <y>370</y>
-         <width>161</width>
+         <width>291</width>
          <height>33</height>
         </rect>
        </property>
@@ -1375,9 +1398,9 @@ QLineEdit:hover
       <widget class="QLineEdit" name="le_vat">
        <property name="geometry">
         <rect>
-         <x>1122</x>
-         <y>478</y>
-         <width>130</width>
+         <x>1150</x>
+         <y>480</y>
+         <width>131</width>
          <height>31</height>
         </rect>
        </property>
@@ -1395,8 +1418,8 @@ QLineEdit:hover
       <widget class="QLabel" name="quantity">
        <property name="geometry">
         <rect>
-         <x>456</x>
-         <y>338</y>
+         <x>580</x>
+         <y>340</y>
          <width>111</width>
          <height>21</height>
         </rect>
@@ -1433,7 +1456,7 @@ QLineEdit:hover
       <widget class="QLineEdit" name="le_rate">
        <property name="geometry">
         <rect>
-         <x>638</x>
+         <x>702</x>
          <y>370</y>
          <width>81</width>
          <height>31</height>
@@ -1454,7 +1477,7 @@ QLineEdit:hover
        <property name="geometry">
         <rect>
          <x>1005</x>
-         <y>613</y>
+         <y>581</y>
          <width>111</width>
          <height>20</height>
         </rect>
@@ -1466,8 +1489,8 @@ QLineEdit:hover
       <widget class="QLineEdit" name="le_paid">
        <property name="geometry">
         <rect>
-         <x>1124</x>
-         <y>608</y>
+         <x>1150</x>
+         <y>576</y>
          <width>129</width>
          <height>30</height>
         </rect>
@@ -1482,6 +1505,72 @@ QLineEdit:hover
 	border-color: rgb(255, 255, 255);
 
 }</string>
+       </property>
+      </widget>
+      <widget class="QTableWidget" name="table">
+       <property name="geometry">
+        <rect>
+         <x>90</x>
+         <y>430</y>
+         <width>901</width>
+         <height>381</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 0, 0);
+background-color: rgb(0, 0, 127);</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="cart">
+       <property name="geometry">
+        <rect>
+         <x>1030</x>
+         <y>370</y>
+         <width>91</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Cart</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="vat_2">
+       <property name="geometry">
+        <rect>
+         <x>1010</x>
+         <y>450</y>
+         <width>131</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Gross Amount</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="le_gross">
+       <property name="geometry">
+        <rect>
+         <x>1150</x>
+         <y>440</y>
+         <width>131</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit
+{
+    font: 10pt &quot;Helvetica&quot;;
+	border-radius: 5px;
+	border-style: solid;
+	background-color: rgb(76, 96, 110);
+}
+</string>
        </property>
       </widget>
      </widget>

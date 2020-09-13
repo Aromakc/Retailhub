@@ -4,7 +4,7 @@
 #include"order.h"
 #include"salerecord.h"
 #include "createaccount.h"
-
+#include<math.h>
 
 Login::Login(QWidget *parent)
     : QMainWindow(parent)
@@ -233,173 +233,7 @@ void Login::on_delete_sw3_clicked()
        refresh_table();
 }
 
-//SALE!!!!!!!!!!
-void Login::on_Sale_clicked()
-{
-   //show stacked window
-    ui->stackedWidget->setCurrentIndex(3);
 
-    // show stacked window 2
-    ui->stackedWidget_2->setCurrentIndex(3);
-
-       QSqlQueryModel *modal=new QSqlQueryModel();
-       QSqlQuery *qry= new QSqlQuery;
-
-       qry->prepare("SELECT username from Users");
-       qry->exec();
-       modal->setQuery(*qry);
-       ui->comboBox_user->setModel(modal);
-
-       QString username=ui->comboBox_user->currentText();
-
-
-       QSqlQueryModel *modal2=new QSqlQueryModel();
-       qry->prepare("SELECT items from Inventory");
-
-       qry->exec();
-       modal2->setQuery(*qry);
-       ui->comboBox_prod->setModel(modal2);
-       QString product_input=ui->comboBox_user->currentText();
-
-       ui->le_vat->setText("13");
-}
-
-void Login::on_comboBox_user_currentIndexChanged(const QString &arg1)
-{
-    QString nulll=arg1;
-    QString username=ui->comboBox_user->currentText();
-
-    QSqlQuery qry;
-       qry.prepare("SELECT name,phone from Users where username='"+username+"'");
-
-       if(qry.exec())
-       {
-           while (qry.next())
-           {
-               ui->le_name->setText(qry.value(0).toString());
-               ui->le_phone->setText(qry.value(1).toString());
-           }
-           qDebug()<< qry.lastQuery();
-
-       }
-       else
-       {
-           QMessageBox::critical(this,tr("error"),qry.lastError().text());
-       }
-   }
-
-void Login::on_comboBox_prod_currentIndexChanged(const QString &arg1)
-{
-     QString nulll=arg1;
-    QString product=ui->comboBox_prod->currentText();
-       QSqlQuery qry;
-       qry.prepare("SELECT Price from Inventory where Items='"+product+"'");
-
-       if(qry.exec())
-       {
-           while (qry.next())
-           {
-               ui->le_rate->setText(qry.value(0).toString());
-           }
-           qDebug()<< qry.lastQuery();
-       }
-       else
-       {
-           QMessageBox::critical(this,tr("error"),qry.lastError().text());
-      }
-}
-
-
-void Login::on_Proceed_Cal_clicked()
-{
-        qfloat16 rate,vat,discount,qty;
-        qfloat16 cal2,cal3,cal1;
-
-        rate=ui->le_rate->text().toInt();
-        qty=ui->le_qty->text().toInt();
-        vat=ui->le_vat->text().toInt();
-        discount=ui->le_discount->text().toInt();
-
-        cal1=qty*rate;
-
-        cal2=(cal1-((discount/100)*cal1));
-        cal3=(cal2+((vat/100)*cal2));
-
-
-        QString amount= QString::number(cal1);
-        QString total= QString::number(cal3);
-
-
-        ui->le_amount->setText(amount);
-        ui->le_gross->setText(amount);
-        ui->le_total->setText(total);
-}
-void Login::on_cancel_order_clicked()
-{
-    ui->le_amount->clear();
-    ui->le_qty->clear();
-    ui->le_total->clear();
-}
-
-
-void Login::on_create_order_clicked()
-{
-        QString product_input=ui->comboBox_prod->currentText();
-        qint64 qty=ui->le_qty->text().toInt();
-
-        // subtracting quantity from inventory
-        QSqlQuery query;
-        query.prepare("SELECT Quantity from Inventory where Items='"+product_input+"'");
-        if(query.exec())
-        {
-            while (query.next())
-            {
-                int cal=query.value(0).toInt(); //wuantiity col 0 next col 1
-                cal-=qty;
-                QString calc=QString::number(cal);
-
-                query.exec("Update Inventory SET Quantity=" + calc + " where Items='"+product_input+"'" );
-            }
-
-        }
-        //static QString brands;
-        QString name,phone,total,cal_qty,brands;
-
-        QString usernames=ui->comboBox_user->currentText();
-        QString products=ui->comboBox_prod->currentText();
-        QString brand="Select Brand from Inventory where Items='"+products+"'";
-        query.prepare(brand);
-        if(query.exec())
-        {
-            while(query.next())
-            {
-              brands=query.value(0).toString();
-            }
-        }
-
-        name=ui->le_name->text();
-        phone=ui->le_phone->text();
-        total=ui->le_total->text();
-
-        QDate date = QDate::currentDate();
-        QString date_set=date.toString("yyyy-MM-dd");
-
-        QTime time= QTime::currentTime();
-        QString time_set=time.toString();
-
-        QString input_order="INSERT into Orders (username,Name,Sold_Item,Brand,Total_Price,Date,Time) values "
-                            "('"+usernames+"','"+name+"','"+products+"','"+brands+"',"+total+",'"+date_set+"','"+time_set+"')";
-
-          if(query.exec(input_order)){
-             QMessageBox::information(this,tr("Save"),tr("Saved"));
-             qDebug()<<query.executedQuery();
-            }
-        else
-        {
-
-            QMessageBox::critical(this,tr("Error."),query.lastError().text());
-        }
-}
 
 void Login::on_Record_clicked()
 {
@@ -541,3 +375,239 @@ void Login::on_le_qty_textEdited(const QString &arg1)
    QString cal3=QString::number(cal2);
     ui->le_amount->setText(cal3);
 }
+
+void Login::on_cart_clicked()
+{
+    const QString product=ui->comboBox_prod->currentText();
+    const QString amount=ui->le_amount->text();
+    const QString qty=ui->le_qty->text();
+    const QString rate=ui->le_rate->text();
+    const int rowCount=ui->table->rowCount();
+    ui->table->insertRow(rowCount);
+
+    ui->table->setItem(rowCount, PRODUCT, new QTableWidgetItem(product));
+    ui->table->setItem(rowCount, QTY, new QTableWidgetItem(qty));
+    ui->table->setItem(rowCount, RATE, new QTableWidgetItem(rate));
+    ui->table->setItem(rowCount, AMOUNT, new QTableWidgetItem(amount));
+}
+
+//================================================ SALE =============================================================================
+void Login::on_Sale_clicked()
+{
+   //show stacked window
+    ui->stackedWidget->setCurrentIndex(3);
+
+    // show stacked window 2
+    ui->stackedWidget_2->setCurrentIndex(3);
+
+       QSqlQueryModel *modal=new QSqlQueryModel();
+       QSqlQuery *qry= new QSqlQuery;
+
+       qry->prepare("SELECT username from Users");
+       qry->exec();
+       modal->setQuery(*qry);
+       ui->comboBox_user->setModel(modal);
+
+       QString username=ui->comboBox_user->currentText();
+
+
+       QSqlQueryModel *modal2=new QSqlQueryModel();
+       qry->prepare("SELECT items from Inventory");
+
+       qry->exec();
+       modal2->setQuery(*qry);
+       ui->comboBox_prod->setModel(modal2);
+       QString product_input=ui->comboBox_user->currentText();
+
+       ui->le_vat->setText("13");
+
+       const QStringList titles {"PRODUCT","QTY","RATE","AMOUNT"};
+       ui->table->setColumnCount(titles.size());
+       ui->table->setHorizontalHeaderLabels(titles);
+}
+
+void Login::on_comboBox_user_currentIndexChanged(const QString &arg1)
+{
+    QString nulll=arg1;
+    QString username=ui->comboBox_user->currentText();
+
+    QSqlQuery qry;
+       qry.prepare("SELECT name,phone from Users where username='"+username+"'");
+
+       if(qry.exec())
+       {
+           while (qry.next())
+           {
+               ui->le_name->setText(qry.value(0).toString());
+               ui->le_phone->setText(qry.value(1).toString());
+           }
+           qDebug()<< qry.lastQuery();
+
+       }
+       else
+       {
+           QMessageBox::critical(this,tr("error"),qry.lastError().text());
+       }
+   }
+
+void Login::on_comboBox_prod_currentIndexChanged(const QString &arg1)
+{
+     QString nulll=arg1;
+    QString product=ui->comboBox_prod->currentText();
+       QSqlQuery qry;
+       qry.prepare("SELECT Price from Inventory where Items='"+product+"'");
+
+       if(qry.exec())
+       {
+           while (qry.next())
+           {
+               ui->le_rate->setText(qry.value(0).toString());
+           }
+           qDebug()<< qry.lastQuery();
+       }
+       else
+       {
+           QMessageBox::critical(this,tr("error"),qry.lastError().text());
+      }
+}
+
+
+void Login::on_Proceed_Cal_clicked()
+{
+    qfloat16 cal1,vat;
+    int total=0;
+    for(int i=0;i<ui->table->rowCount();i++){
+      int a=ui->table->item(i,3)->text().toInt();
+      total=total+a;
+    }
+    QString gross= QString::number(total);
+    ui->le_gross->setText(gross);
+    qDebug()<<total;
+
+    vat=ui->le_vat->text().toInt();
+    cal1=(total+((vat/100)*total));
+
+    QString ntotal= QString::number(cal1);
+    ui->total->setText(ntotal);
+
+}
+void Login::on_cancel_order_clicked()
+{
+    ui->le_amount->clear();
+    ui->le_qty->clear();
+    ui->total->clear();
+}
+
+//-------------------------------- PUSHBUTTON -> ORDER -----------------------------------------------------------
+void Login::on_create_order_clicked()
+{
+    QString usernames=ui->comboBox_user->currentText();
+    QString product_input=ui->comboBox_prod->currentText();
+
+
+    qint64 paid=ui->le_paid->text().toInt();
+    qint64 total=ui->total->text().toInt();
+    QString name=ui->le_name->text();
+    QString brand;
+
+//------------------------------- USERS: EXPENDITURE AND BALANCE UPDATE--------------------------------------------
+
+   QSqlQuery query1;
+   query1.prepare("Select Expenditure,Balance from Users where username='"+usernames+"' ");
+   if(query1.exec())
+   {
+       while(query1.next())
+       {
+       int spend=query1.value(0).toInt();
+       int balance=query1.value(1).toInt();
+       qDebug()<<spend;
+       spend += paid;
+       balance = total-paid;
+       QString spends=QString::number(spend);
+       QString balances=QString::number(balance);
+       query1.exec("Update Users SET Expenditure='"+spends+"', Balance='"+balances+"' where username='"+usernames+"'" );
+       }
+    }
+
+//------------------------------INVENTORY: QUANTITY UPDATE -------------------------------------------------
+
+   QString array[200][200];
+   for(int i=0;i<ui->table->rowCount();i++)
+   {
+       for (int j=0;j<ui->table->columnCount();j++)
+       {
+           QString a =ui->table->item(i,j)->text();
+           array[i][j]=a;
+           qDebug()<<array[i][j];
+       }
+
+           QSqlQuery query;
+           query.prepare("SELECT Quantity,Brand from Inventory where Items='"+array[i][0]+"'");
+           if(query.exec())
+           {
+               while (query.next())
+               {
+                   qint16 cal=query.value(0).toInt();
+                   brand=query.value(1).toString();
+                   //qDebug()<<cal;
+
+                   qint16 qty=array[i][1].toInt();
+                  // qDebug()<<qty;
+
+                   qint16 cal1=(cal-qty);
+                   //qDebug()<<cal1;
+
+                   QString calc=QString::number(cal1);
+
+                   query.exec("Update Inventory SET Quantity=" + calc + " where Items='"+array[i][0]+"'" );
+               }
+           }
+//------------------------------------------ODERS.DB SOLD ITEM RECORD-------------------------------------------------------------------------------
+           QDate date = QDate::currentDate();
+           QString date_set=date.toString("yyyy-MM-dd");
+
+           QTime time= QTime::currentTime();
+           QString time_set=time.toString();
+
+           QString input_order="INSERT into Orders (username,Name,Sold_Item,Brand,Total_Price,Date,Time) values "
+                               "('"+usernames+"','"+name+"','"+array[i][0]+"','"+brand+"',"+array[i][3]+",'"+date_set+"','"+time_set+"')";
+
+             if(!query.exec(input_order))
+           {
+
+               QMessageBox::critical(this,tr("Error."),query.lastError().text());
+           }
+
+   }
+
+   QtRPT *report = new QtRPT(this);
+   report->loadReport(":/Resources/reporte.xml");
+
+   connect(report, SIGNAL(setDSInfo(DataSetInfo &)),
+   this, SLOT(setDSInfo(DataSetInfo &)));
+
+
+       connect(report,&QtRPT::setValue,[&](const int recNo,
+       const QString paramName,QVariant &paramValue,
+       const int reportPage)
+   {(void) reportPage;
+       if (paramName=="product"){
+           paramValue=ui->table->item(recNo, PRODUCT)->text();
+       }
+       if (paramName=="qty"){
+           paramValue=ui->table->item(recNo, QTY)->text();
+       }
+       if(paramName=="rate"){
+           paramValue=ui->table->item(recNo, RATE)->text();
+       }
+       if(paramName=="amount"){
+           paramValue=ui->table->item(recNo, AMOUNT)->text();
+       }
+   });
+
+   report->printExec();
+}
+void Login::setDSInfo(DataSetInfo &dsInfo){
+    dsInfo.recordCount = ui->table->rowCount();
+}
+
