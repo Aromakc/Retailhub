@@ -1,9 +1,5 @@
 #include "login.h"
 #include "ui_login.h"
-#include"iteminfo.h"
-#include"order.h"
-#include"salerecord.h"
-#include "createaccount.h"
 #include<math.h>
 
 Login::Login(QWidget *parent)
@@ -26,6 +22,7 @@ Login::Login(QWidget *parent)
     timer->start();
 
     ui->stackedWidget->setCurrentIndex(0);
+    display_dash();
 }
 
 Login::~Login()
@@ -56,15 +53,34 @@ QString Login::currentdate() {
 void Login::on_dashboard_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
-    ui->stackedWidget_2->setCurrentIndex(0);
+    display_dash();
 }
+void Login::display_dash()
+{
+    qint16 i=0,j=0;
+    QSqlQuery query;
+    query.prepare("Select Quantity from Inventory");
+    if(query.exec()){
+        while(query.next()){
+            if (query.value(0)!=0)
+              i++;
+            else
+              j++;
+        }
+    }
+    QString ts=QString::number(i);
+    QString os=QString::number(j);
+
+    ui->total_stocks_value->setText(ts);
+    ui->out_of_stocks_value->setText(os);
+}
+
 
 
 //ACCOUNT
 void Login::on_customers_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
-    ui->stackedWidget_2->setCurrentIndex(1);
 }
 void Login::on_pushButton_create_clicked()
 {
@@ -132,7 +148,6 @@ void Login::on_Inventory_clicked()
 {
     refresh_table();
     ui->stackedWidget->setCurrentIndex(2);
-    ui->stackedWidget_2->setCurrentIndex(2);
 }
 
 
@@ -238,7 +253,6 @@ void Login::on_delete_sw3_clicked()
 void Login::on_Record_clicked()
 {
     ui->stackedWidget->setCurrentIndex(4);
-    ui->stackedWidget_2->setCurrentIndex(4);
 
     customernamecompleter();
     itemnamecompleter();
@@ -398,7 +412,6 @@ void Login::on_Sale_clicked()
     ui->stackedWidget->setCurrentIndex(3);
 
     // show stacked window 2
-    ui->stackedWidget_2->setCurrentIndex(3);
 
        QSqlQueryModel *modal=new QSqlQueryModel();
        QSqlQuery *qry= new QSqlQuery;
@@ -426,10 +439,10 @@ void Login::on_Sale_clicked()
        ui->table->setHorizontalHeaderLabels(titles);
 }
 
-void Login::on_comboBox_user_currentIndexChanged(const QString &arg1)
+void Login::on_comboBox_user_currentIndexChanged(const QString &username)
 {
-    QString nulll=arg1;
-    QString username=ui->comboBox_user->currentText();
+   // QString nulll=arg1;
+   // QString username=ui->comboBox_user->currentText();
 
     QSqlQuery qry;
        qry.prepare("SELECT name,phone from Users where username='"+username+"'");

@@ -59,6 +59,8 @@ public:
     ~Login();
 private:
     QString currentdate();
+    //dashboard
+    void display_dash();
 
     //create account
     void resetForm();

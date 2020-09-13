@@ -16,26 +16,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    createaccount.cpp \
-    iteminfo.cpp \
     main.cpp \
-    login.cpp \
-    order.cpp \
-    salerecord.cpp
+    login.cpp
 
 HEADERS += \
-    createaccount.h \
-    iteminfo.h \
-    login.h \
-    order.h \
-    salerecord.h
+    login.h
 
 FORMS += \
-    createaccount.ui \
-    iteminfo.ui \
-    login.ui \
-    order.ui \
-    salerecord.ui
+    login.ui
 #PDF code
 QMAKE_CXXFLAGS+= -std=gnu++14
 DEFINES += NO_BARCODE
