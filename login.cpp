@@ -7,27 +7,26 @@ Login::Login(QWidget *parent)
     , ui(new Ui::Login)
 {
     ui->setupUi(this);
-
-    if(!connOpen())
+    if(!connOpen())                                           //connecting and checking database
         ui->statusbar->showMessage("Failed to locate database!");
     else
         ui->statusbar->showMessage("Connected...");
-
-    QDateTime datetime= QDateTime::currentDateTime();
+    QDateTime datetime= QDateTime::currentDateTime();        //accessing date from QDatetime
     QString datetime_text=datetime.toString("dd MMM yyyy");
     ui->date->setText(datetime_text);
 
-    QTimer *timer=new QTimer(this);
+    QTimer *timer=new QTimer(this);                          //creating new DYNAMIC memory to store time
     connect(timer,SIGNAL(timeout()),this,SLOT(showtime()));
     timer->start();
 
-    ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget->setCurrentIndex(0);                  // showing Dashboard; ui pointing to object stackedWidget
     display_dash();
 }
 
 Login::~Login()
 {
     delete ui;
+    connClose();                                             //closing connection to Sqlite database
 }
 void Login::showtime()
 {
@@ -49,7 +48,7 @@ QString Login::currentdate() {
 }
 
 
-//DASHBOARD
+//===================================================DASHBOARD=========================================================
 void Login::on_dashboard_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
@@ -59,7 +58,8 @@ void Login::display_dash()
 {
     qint16 i=0,j=0;
     QSqlQuery query;
-    query.prepare("Select Quantity from Inventory");
+
+    query.prepare("Select Quantity from Inventory"); //performing a task to select all Items from Quantity column in Inventory Table
     if(query.exec()){
         while(query.next()){
             if (query.value(0)!=0)
@@ -71,13 +71,13 @@ void Login::display_dash()
     QString ts=QString::number(i);
     QString os=QString::number(j);
 
-    ui->total_stocks_value->setText(ts);
-    ui->out_of_stocks_value->setText(os);
+    ui->total_stocks_value->setText(ts);            //show quantity_number>0
+    ui->out_of_stocks_value->setText(os);           //show quantity_number=0
 }
 
 
 
-//ACCOUNT
+//====================================================ACCOUNT===================================================================
 void Login::on_customers_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
@@ -143,6 +143,8 @@ void Login::refresh_table()
     modal->setQuery(*qry);
     ui->tableView->setModel(modal);
 }
+
+//================================================ INVENTORY=============================================================================
 
 void Login::on_Inventory_clicked()
 {

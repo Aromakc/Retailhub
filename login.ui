@@ -282,7 +282,7 @@ border-color: rgb(204, 199, 221);</string>
       <string notr="true"/>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="sw_dash">
       <widget class="QFrame" name="frame_4">
