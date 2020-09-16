@@ -1,5 +1,16 @@
 <RCC>
     <qresource prefix="/">
         <file>Resources/reporte.xml</file>
+        <file>Resources/retailhub.ico</file>
+        <file>Resources/icon.png</file>
+        <file>Resources/dashboard.png</file>
+        <file>Resources/money.png</file>
+        <file>Resources/product.png</file>
+        <file>Resources/share.png</file>
+        <file>Resources/shopping-cart.svg</file>
+        <file>Resources/seo-report.png</file>
+        <file>Resources/person.png</file>
+        <file>Resources/pallet.png</file>
+        <file>Resources/report.png</file>
     </qresource>
 </RCC>

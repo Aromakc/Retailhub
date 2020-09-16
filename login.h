@@ -10,6 +10,7 @@
 #include<iostream>
 #include<ctime>
 #include<QDate>
+#include<string.h>
 
 #include<QStatusBar>
 #include <QMessageBox>
@@ -25,8 +26,12 @@
 #include<QTableWidget>
 #include<QtMath>
 
-//Header for iteminfo
+#include <QApplication>
+#include<QObject>
+#include <QWindow>
 
+//Header for iteminfo
+using namespace std;
 QT_BEGIN_NAMESPACE
 namespace Ui { class Login; }
 QT_END_NAMESPACE
@@ -74,6 +79,8 @@ private:
     void itemnamecompleter();
     void companynamecompleter();
     void setdates_record();
+    void takequery();
+
 
 
 private slots:
@@ -133,6 +140,8 @@ private slots:
     //pdf
     void setDSInfo(DataSetInfo &dsInfo);
 
+
+    void on_clear_balance_clicked();
 
 private:
     enum{

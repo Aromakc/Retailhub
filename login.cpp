@@ -6,6 +6,9 @@ Login::Login(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Login)
 {
+
+
+
     ui->setupUi(this);
     if(!connOpen())                                           //connecting and checking database
         ui->statusbar->showMessage("Failed to locate database!");
@@ -56,7 +59,7 @@ void Login::on_dashboard_clicked()
 }
 void Login::display_dash()
 {
-    qint16 i=0,j=0;
+    qint16 i=0,j=0,k=0;
     QSqlQuery query;
 
     query.prepare("Select Quantity from Inventory"); //performing a task to select all Items from Quantity column in Inventory Table
@@ -68,11 +71,19 @@ void Login::display_dash()
               j++;
         }
     }
+    query.prepare("Select username from Users");
+    if(query.exec()){
+        while(query.next()){
+           k++;
+        }
+    }
     QString ts=QString::number(i);
     QString os=QString::number(j);
+    QString tu=QString::number(k);
 
     ui->total_stocks_value->setText(ts);            //show quantity_number>0
     ui->out_of_stocks_value->setText(os);           //show quantity_number=0
+    ui->total_users_value->setText(tu);
 }
 
 
@@ -81,7 +92,9 @@ void Login::display_dash()
 void Login::on_customers_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+
 }
+
 void Login::on_pushButton_create_clicked()
 {
 
@@ -93,8 +106,48 @@ void Login::on_pushButton_create_clicked()
 }
 void Login::on_pushButton_showcustomerinfo_clicked()
 {
+    QString username=ui->line_username->text();
+    QSqlQuery query;
+    query.prepare("Select * from Users where username='"+username+"'");
+    if(!query.exec()){
+        QMessageBox::information(this, "Error", "Account hasn't been registered!");
+    }
+    else{
+        while (query.next()){
+        ui->group_username->setText(query.value(0).toString());
+        ui->group_name->setText(query.value(1).toString());
+        ui->group_address->setText(query.value(3).toString());
+        ui->group_phone->setText(query.value(4).toString());
+        ui->group_showpaid->setText(query.value(5).toString());
+        ui->group_showbalance->setText(query.value(6).toString());
+        }
+    }
+
+
 
 }
+
+void Login::on_clear_balance_clicked()
+{
+    QString username=ui->line_username->text();
+    QSqlQuery query;
+    query.prepare("Select Expenditure,Balance from Users where username='"+username+"'");
+    if(query.exec()){
+        while (query.next()){
+            qint64 paid=(query.value(0)).toInt();
+            qint64 balance=(query.value(1).toInt());
+            qDebug()<<paid;
+            qDebug()<<balance;
+            paid +=balance;
+            balance=0;
+            QString paids=QString::number(paid);
+            QString balances=QString::number(balance);
+            query.exec("UPDATE Users set Expenditure='"+paids+"', Balance='"+balances+"' where username='"+username+"'");
+        }
+    }
+    ui->statusbar->showMessage("Complete Balance is Paid 😊");
+}
+
 bool Login::addaccount()
 {
     // add customers acccount to database(Table:Users)
@@ -251,17 +304,22 @@ void Login::on_delete_sw3_clicked()
 }
 
 
+//======================================================Records============================================================================
 
 void Login::on_Record_clicked()
 {
     ui->stackedWidget->setCurrentIndex(4);
-
+    foreach(QLineEdit* le, findChildren<QLineEdit*>()) {
+       le->clear();
+    }
+    ui->tableView_report->reset();
     customernamecompleter();
     itemnamecompleter();
     companynamecompleter();
 
     setdates_record();
 }
+
 void Login::customernamecompleter(){
     QSqlQueryModel *customer_name_model= new QSqlQueryModel(this);
     customer_name_model->setQuery("select username from Users");
@@ -271,7 +329,8 @@ void Login::customernamecompleter(){
     customer_name_completer->setCompletionMode(QCompleter::PopupCompletion);
 
     // set the model onto the
-    ui->setup_customer_name->setCompleter(customer_name_completer);
+ui->setup_customer_name->setCompleter(customer_name_completer);
+
 }
 void Login::itemnamecompleter(){
     QSqlQueryModel *item_name_model= new QSqlQueryModel(this);
@@ -308,12 +367,18 @@ void Login::on_generate_report_pushbutton_clicked()
    QString sortcustomer = ui->setup_customer_name->text();
    QString sortbrand = ui->setup_brand_name->text();
    QString sortitem = ui->setup_items_name->text();
+   QString report;
 
-
-    QString report="Select * from Orders where username='"+sortcustomer+"' "
+if(sortcustomer!="" and sortitem!="" and sortbrand!=""){
+    report="Select * from Orders where username='"+sortcustomer+"' "
                    "and Sold_Item='"+sortitem+"' and Brand='"+sortbrand+"' "
                    "and DATE >='"+from+"' "
                    "AND DATE <='"+to+"'";
+
+}
+else{
+    report="Select * from Orders where DATE >='"+from+"' AND DATE <='"+to+"'";
+}
     qry->prepare(report);
     qry->exec();
     qDebug()<<qry->executedQuery();
@@ -625,4 +690,5 @@ void Login::on_create_order_clicked()
 void Login::setDSInfo(DataSetInfo &dsInfo){
     dsInfo.recordCount = ui->table->rowCount();
 }
+
 
