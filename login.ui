@@ -413,7 +413,7 @@ font: 25pt &quot;Copperplate Gothic Bold&quot;;</string>
       <string notr="true"/>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="sw_dash">
       <widget class="QFrame" name="frame_4">
@@ -1248,8 +1248,8 @@ font: 10pt &quot;Helvetica&quot;;
        <property name="geometry">
         <rect>
          <x>420</x>
-         <y>490</y>
-         <width>173</width>
+         <y>480</y>
+         <width>156</width>
          <height>187</height>
         </rect>
        </property>
@@ -1258,19 +1258,19 @@ font: 10pt &quot;Helvetica&quot;;
          <widget class="QLineEdit" name="lineEdit_iid"/>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_item"/>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="lineEdit_qty"/>
+         <widget class="QLineEdit" name="lineEdit_type"/>
         </item>
         <item>
          <widget class="QLineEdit" name="lineEdit_brand"/>
         </item>
         <item>
+         <widget class="QLineEdit" name="lineEdit_item"/>
+        </item>
+        <item>
          <widget class="QLineEdit" name="lineEdit_price"/>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_type"/>
+         <widget class="QLineEdit" name="lineEdit_qty"/>
         </item>
        </layout>
       </widget>

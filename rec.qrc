@@ -12,5 +12,6 @@
         <file>Resources/person.png</file>
         <file>Resources/pallet.png</file>
         <file>Resources/report.png</file>
+        <file>Resources/items.db</file>
     </qresource>
 </RCC>

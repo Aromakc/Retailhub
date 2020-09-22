@@ -6,10 +6,9 @@ Login::Login(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Login)
 {
-
-
-
     ui->setupUi(this);
+    this->setWindowTitle("RetailHub");
+
     if(!connOpen())                                           //connecting and checking database
         ui->statusbar->showMessage("Failed to locate database!");
     else
@@ -217,6 +216,7 @@ void Login::on_insert_sw3_clicked()
         item=ui->lineEdit_item->text();
         price=ui->lineEdit_price->text().toInt(&ok1);
         quantity=ui->lineEdit_qty->text().toInt(&ok2);
+        //qDebug()<<ok2;
 
         if(ok1 && ok2){
 
@@ -236,12 +236,7 @@ void Login::on_insert_sw3_clicked()
 
         if(qry.exec()){
             //QMessageBox::information(this,tr("Save"),tr("Saved"));
-            ui->lineEdit_brand->clear();
-            ui->lineEdit_iid->clear();
-            ui->lineEdit_item->clear();
-            ui->lineEdit_type->clear();
-            ui->lineEdit_price->clear();
-            ui->lineEdit_qty->clear();
+           inv_clear();
         }
         else
         {
@@ -271,12 +266,7 @@ void Login::on_update_sw3_clicked()
       qry.prepare("UPDATE Inventory set Type='"+type+"',Brand='"+brand+"',Items='"+item+"', Price="+price+",Quantity="+quantity+" WHERE ID="+iid+"");
       if(qry.exec()){
           QMessageBox::information(this,tr("Edit"),tr("Updated"));
-          ui->lineEdit_brand->clear();
-          ui->lineEdit_iid->clear();
-          ui->lineEdit_item->clear();
-          ui->lineEdit_type->clear();
-          ui->lineEdit_price->clear();
-          ui->lineEdit_qty->clear();
+          inv_clear();
       }
       else
       {
@@ -294,7 +284,7 @@ void Login::on_delete_sw3_clicked()
        qry.prepare("DELETE from Inventory WHERE ID="+iid+"");
        if(qry.exec()){
            QMessageBox::information(this,tr("Delete"),tr("Deleted"));
-           ui->lineEdit_iid->clear();
+           inv_clear();
        }
        else
        {
@@ -303,7 +293,14 @@ void Login::on_delete_sw3_clicked()
        refresh_table();
 }
 
-
+void Login::inv_clear(){
+    ui->lineEdit_brand->clear();
+    ui->lineEdit_iid->clear();
+    ui->lineEdit_item->clear();
+    ui->lineEdit_type->clear();
+    ui->lineEdit_price->clear();
+    ui->lineEdit_qty->clear();
+}
 //======================================================Records============================================================================
 
 void Login::on_Record_clicked()
@@ -446,32 +443,6 @@ void Login::on_sortitemwise_clicked()
 }
 
 
-
-void Login::on_le_qty_textEdited(const QString &arg1)
-{
-   int cal=arg1.toInt();
-   int cal1= ui->le_rate->text().toInt();
-   int cal2=(cal1*cal);
-   std::cout<<cal2;
-   QString cal3=QString::number(cal2);
-    ui->le_amount->setText(cal3);
-}
-
-void Login::on_cart_clicked()
-{
-    const QString product=ui->comboBox_prod->currentText();
-    const QString amount=ui->le_amount->text();
-    const QString qty=ui->le_qty->text();
-    const QString rate=ui->le_rate->text();
-    const int rowCount=ui->table->rowCount();
-    ui->table->insertRow(rowCount);
-
-    ui->table->setItem(rowCount, PRODUCT, new QTableWidgetItem(product));
-    ui->table->setItem(rowCount, QTY, new QTableWidgetItem(qty));
-    ui->table->setItem(rowCount, RATE, new QTableWidgetItem(rate));
-    ui->table->setItem(rowCount, AMOUNT, new QTableWidgetItem(amount));
-}
-
 //================================================ SALE =============================================================================
 void Login::on_Sale_clicked()
 {
@@ -578,6 +549,30 @@ void Login::on_cancel_order_clicked()
     ui->total->clear();
 }
 
+void Login::on_le_qty_textEdited(const QString &arg1)
+{
+   int cal=arg1.toInt();
+   int cal1= ui->le_rate->text().toInt();
+   int cal2=(cal1*cal);
+   std::cout<<cal2;
+   QString cal3=QString::number(cal2);
+    ui->le_amount->setText(cal3);
+}
+
+void Login::on_cart_clicked()
+{
+    const QString product=ui->comboBox_prod->currentText();
+    const QString amount=ui->le_amount->text();
+    const QString qty=ui->le_qty->text();
+    const QString rate=ui->le_rate->text();
+    const int rowCount=ui->table->rowCount();
+    ui->table->insertRow(rowCount);
+
+    ui->table->setItem(rowCount, PRODUCT, new QTableWidgetItem(product));
+    ui->table->setItem(rowCount, QTY, new QTableWidgetItem(qty));
+    ui->table->setItem(rowCount, RATE, new QTableWidgetItem(rate));
+    ui->table->setItem(rowCount, AMOUNT, new QTableWidgetItem(amount));
+}
 //-------------------------------- PUSHBUTTON -> ORDER -----------------------------------------------------------
 void Login::on_create_order_clicked()
 {
@@ -671,6 +666,12 @@ void Login::on_create_order_clicked()
        const QString paramName,QVariant &paramValue,
        const int reportPage)
    {(void) reportPage;
+       if (paramName == "customer")
+               paramValue = usernames;
+       if (paramName == "dates")
+               paramValue = ui->date->text();
+       if (paramName == "vat")
+               paramValue = ui->le_vat->text();
        if (paramName=="product"){
            paramValue=ui->table->item(recNo, PRODUCT)->text();
        }

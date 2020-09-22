@@ -73,6 +73,7 @@ private:
 
     //view inventory
     void refresh_table();
+    void inv_clear();
 
     //view record
     void customernamecompleter();
