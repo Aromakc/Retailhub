@@ -448,7 +448,6 @@ void Login::on_Sale_clicked()
 {
    //show stacked window
     ui->stackedWidget->setCurrentIndex(3);
-
     // show stacked window 2
 
        QSqlQueryModel *modal=new QSqlQueryModel();
@@ -479,8 +478,6 @@ void Login::on_Sale_clicked()
 
 void Login::on_comboBox_user_currentIndexChanged(const QString &username)
 {
-   // QString nulll=arg1;
-   // QString username=ui->comboBox_user->currentText();
 
     QSqlQuery qry;
        qry.prepare("SELECT name,phone from Users where username='"+username+"'");
@@ -503,16 +500,24 @@ void Login::on_comboBox_user_currentIndexChanged(const QString &username)
 
 void Login::on_comboBox_prod_currentIndexChanged(const QString &arg1)
 {
+    ui->cart->setText("Cart");
+    ui->cart->setStyleSheet("QPushButton{background-color: rgb(0, 175, 0);} QPushButton{color: rgb(255, 255, 255);}");
      QString nulll=arg1;
     QString product=ui->comboBox_prod->currentText();
        QSqlQuery qry;
-       qry.prepare("SELECT Price from Inventory where Items='"+product+"'");
+       qry.prepare("SELECT Price,Quantity from Inventory where Items='"+product+"'");
 
        if(qry.exec())
        {
            while (qry.next())
            {
                ui->le_rate->setText(qry.value(0).toString());
+               ui->le_qty->setPlaceholderText(qry.value(1).toString());
+               if(qry.value(1)==0)
+               {
+                   ui->cart->setText("Out Of Stocks");
+                   ui->cart->setStyleSheet("QPushButton{background-color: rgb(255, 75, 0);} QPushButton{color: rgb(255, 255, 255);}");
+               }
            }
            qDebug()<< qry.lastQuery();
        }
@@ -547,6 +552,9 @@ void Login::on_cancel_order_clicked()
     ui->le_amount->clear();
     ui->le_qty->clear();
     ui->total->clear();
+    ui->table->clearContents();
+    ui->table->setRowCount(0);
+
 }
 
 void Login::on_le_qty_textEdited(const QString &arg1)
@@ -572,6 +580,9 @@ void Login::on_cart_clicked()
     ui->table->setItem(rowCount, QTY, new QTableWidgetItem(qty));
     ui->table->setItem(rowCount, RATE, new QTableWidgetItem(rate));
     ui->table->setItem(rowCount, AMOUNT, new QTableWidgetItem(amount));
+
+    ui->le_qty->clear();
+    ui->le_amount->clear();
 }
 //-------------------------------- PUSHBUTTON -> ORDER -----------------------------------------------------------
 void Login::on_create_order_clicked()
