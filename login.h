@@ -40,7 +40,9 @@ class Login : public QMainWindow
 {
     Q_OBJECT
 public:
-    QSqlDatabase mydb;    // default connection
+    QDateTime datetime= QDateTime::currentDateTime();      //accessing date from QDatetime
+
+    QSqlDatabase mydb;    // default connection    
     void connClose(){
         mydb.close();
         mydb.removeDatabase(QSqlDatabase::defaultConnection); //closing db and removing any connection
@@ -63,7 +65,6 @@ public:
     Login(QWidget *parent = nullptr);
     ~Login();
 private:
-    QString currentdate();
     //dashboard
     void display_dash();
 

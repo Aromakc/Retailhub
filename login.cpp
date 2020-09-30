@@ -13,7 +13,7 @@ Login::Login(QWidget *parent)
         ui->statusbar->showMessage("Failed to locate database!");
     else
         ui->statusbar->showMessage("Connected...");
-    QDateTime datetime= QDateTime::currentDateTime();        //accessing date from QDatetime
+
     QString datetime_text=datetime.toString("dd MMM yyyy");
     ui->date->setText(datetime_text);
 
@@ -37,7 +37,7 @@ void Login::showtime()
     ui->time->setText(time_text);
 
 }
-QString Login::currentdate() {
+/*QString Login::currentdate() {
     time_t     now = time(0);
     struct tm  tstruct;
     char       buf[80];
@@ -47,7 +47,7 @@ QString Login::currentdate() {
     strftime(buf, sizeof(buf), "%d-%m-%Y", &tstruct);
 
     return buf;
-}
+}*/
 
 
 //===================================================DASHBOARD=========================================================
@@ -702,5 +702,8 @@ void Login::on_create_order_clicked()
 void Login::setDSInfo(DataSetInfo &dsInfo){
     dsInfo.recordCount = ui->table->rowCount();
 }
+
+
+
 
 
