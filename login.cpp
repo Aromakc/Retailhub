@@ -474,6 +474,19 @@ void Login::on_Sale_clicked()
        const QStringList titles {"PRODUCT","QTY","RATE","AMOUNT"};
        ui->table->setColumnCount(titles.size());
        ui->table->setHorizontalHeaderLabels(titles);
+
+       //------------------------------------------------invoice----------------------------
+                  qint64 invoice=1;
+                  QString invoices;
+       QSqlQuery query;
+                  query.prepare("Select username from orders");
+                  if(query.exec()){
+                  while(query.next()){
+                        invoice++;
+                     }
+                 }
+                  invoices=QString::number(invoice);
+                  ui->invoice->setText(invoices);
 }
 
 void Login::on_comboBox_user_currentIndexChanged(const QString &username)
@@ -552,11 +565,14 @@ void Login::on_cancel_order_clicked()
     ui->le_amount->clear();
     ui->le_qty->clear();
     ui->total->clear();
+    ui->le_gross->clear();
+    ui->total->clear();
+    ui->le_paid->clear();
     ui->table->clearContents();
     ui->table->setRowCount(0);
 
 }
-
+//----------------------------------------------------auto calculation------------------------------
 void Login::on_le_qty_textEdited(const QString &arg1)
 {
    int cal=arg1.toInt();
@@ -594,26 +610,31 @@ void Login::on_create_order_clicked()
     qint64 paid=ui->le_paid->text().toInt();
     qint64 total=ui->total->text().toInt();
     QString name=ui->le_name->text();
-    QString brand;
+    QString brand,invoices;
 
 //------------------------------- USERS: EXPENDITURE AND BALANCE UPDATE--------------------------------------------
 
    QSqlQuery query1;
+   QString balances;
+   int spend;
    query1.prepare("Select Expenditure,Balance from Users where username='"+usernames+"' ");
    if(query1.exec())
    {
        while(query1.next())
-       {
-       int spend=query1.value(0).toInt();
+       {          
+       spend=query1.value(0).toInt();
        int balance=query1.value(1).toInt();
        qDebug()<<spend;
        spend += paid;
        balance = total-paid;
        QString spends=QString::number(spend);
-       QString balances=QString::number(balance);
+
+
+       balances=QString::number(balance);
        query1.exec("Update Users SET Expenditure='"+spends+"', Balance='"+balances+"' where username='"+usernames+"'" );
        }
     }
+
 
 //------------------------------INVENTORY: QUANTITY UPDATE -------------------------------------------------
 
@@ -648,6 +669,8 @@ void Login::on_create_order_clicked()
                    query.exec("Update Inventory SET Quantity=" + calc + " where Items='"+array[i][0]+"'" );
                }
            }
+
+
 //------------------------------------------ODERS.DB SOLD ITEM RECORD-------------------------------------------------------------------------------
            QDate date = QDate::currentDate();
            QString date_set=date.toString("yyyy-MM-dd");
@@ -665,6 +688,10 @@ void Login::on_create_order_clicked()
            }
 
    }
+
+
+
+
 
    QtRPT *report = new QtRPT(this);
    report->loadReport(":/Resources/reporte.xml");
@@ -695,9 +722,19 @@ void Login::on_create_order_clicked()
        if(paramName=="amount"){
            paramValue=ui->table->item(recNo, AMOUNT)->text();
        }
+       if(paramName=="duebalance"){
+           paramValue=balances;
+       }
+       if(paramName=="paid"){
+           paramValue=paid;
+       }
+       if(paramName=="invoice"){
+           paramValue=ui->invoice->text();
+       }
    });
 
-   report->printExec();
+    report->printExec();
+     //report->printPDF("../Invoice/.pdf", true);
 }
 void Login::setDSInfo(DataSetInfo &dsInfo){
     dsInfo.recordCount = ui->table->rowCount();

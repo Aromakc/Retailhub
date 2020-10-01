@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     a.setWindowIcon(QIcon(":/Resources/icon.png"));
     a.setApplicationName("Retailhub");
     a.setApplicationVersion("0.1");
-    a.setOrganizationName("SINNS");
+    a.setOrganizationName("Aromakc");
     Login w;
     w.show();
     return a.exec();
